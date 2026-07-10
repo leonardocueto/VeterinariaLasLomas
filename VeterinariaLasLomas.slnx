@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="BE/BE.csproj" />
+  <Project Path="BLL/BLL.csproj" />
+  <Project Path="DAL/DAL.csproj" />
+  <Project Path="Mapper/Mapper.csproj" />
   <Project Path="VeterinariaLasLomas/VeterinariaLasLomas.csproj" />
 </Solution>
