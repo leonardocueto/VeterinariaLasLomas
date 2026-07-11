@@ -31,6 +31,9 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             tabTurnos = new TabPage();
             tabHistorial = new TabPage();
@@ -42,10 +45,15 @@
             btnNuevoCliente = new Button();
             dgvClientes = new DataGridView();
             tabMascotas = new TabPage();
+            dgvMascotas = new DataGridView();
+            btnBajaMascota = new Button();
+            btnNuevaMascota = new Button();
             tabVeterinarios = new TabPage();
             tabControl.SuspendLayout();
             tabClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            tabMascotas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMascotas).BeginInit();
             SuspendLayout();
             // 
             // tabControl
@@ -56,28 +64,31 @@
             tabControl.Controls.Add(tabMascotas);
             tabControl.Controls.Add(tabVeterinarios);
             tabControl.Font = new Font("Segoe UI", 9F);
-            tabControl.Location = new Point(5, 2);
+            tabControl.Location = new Point(6, 3);
+            tabControl.Margin = new Padding(3, 4, 3, 4);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(795, 447);
+            tabControl.Size = new Size(909, 596);
             tabControl.TabIndex = 0;
             // 
             // tabTurnos
             // 
-            tabTurnos.Location = new Point(4, 24);
+            tabTurnos.Location = new Point(4, 29);
+            tabTurnos.Margin = new Padding(3, 4, 3, 4);
             tabTurnos.Name = "tabTurnos";
-            tabTurnos.Padding = new Padding(3);
-            tabTurnos.Size = new Size(787, 419);
+            tabTurnos.Padding = new Padding(3, 4, 3, 4);
+            tabTurnos.Size = new Size(901, 563);
             tabTurnos.TabIndex = 0;
             tabTurnos.Text = "Turnos";
             tabTurnos.UseVisualStyleBackColor = true;
             // 
             // tabHistorial
             // 
-            tabHistorial.Location = new Point(4, 24);
+            tabHistorial.Location = new Point(4, 29);
+            tabHistorial.Margin = new Padding(3, 4, 3, 4);
             tabHistorial.Name = "tabHistorial";
-            tabHistorial.Padding = new Padding(3);
-            tabHistorial.Size = new Size(787, 419);
+            tabHistorial.Padding = new Padding(3, 4, 3, 4);
+            tabHistorial.Size = new Size(901, 563);
             tabHistorial.TabIndex = 1;
             tabHistorial.Text = "Historial";
             tabHistorial.UseVisualStyleBackColor = true;
@@ -90,10 +101,11 @@
             tabClientes.Controls.Add(btnBajaCliente);
             tabClientes.Controls.Add(btnNuevoCliente);
             tabClientes.Controls.Add(dgvClientes);
-            tabClientes.Location = new Point(4, 24);
+            tabClientes.Location = new Point(4, 29);
+            tabClientes.Margin = new Padding(3, 4, 3, 4);
             tabClientes.Name = "tabClientes";
-            tabClientes.Padding = new Padding(3);
-            tabClientes.Size = new Size(787, 419);
+            tabClientes.Padding = new Padding(3, 4, 3, 4);
+            tabClientes.Size = new Size(901, 563);
             tabClientes.TabIndex = 2;
             tabClientes.Text = "Clientes";
             tabClientes.UseVisualStyleBackColor = true;
@@ -101,9 +113,10 @@
             // btnActualizarClientes
             // 
             btnActualizarClientes.BackColor = Color.Transparent;
-            btnActualizarClientes.Location = new Point(581, 34);
+            btnActualizarClientes.Location = new Point(664, 45);
+            btnActualizarClientes.Margin = new Padding(3, 4, 3, 4);
             btnActualizarClientes.Name = "btnActualizarClientes";
-            btnActualizarClientes.Size = new Size(95, 28);
+            btnActualizarClientes.Size = new Size(109, 37);
             btnActualizarClientes.TabIndex = 5;
             btnActualizarClientes.Text = "Actualizar";
             btnActualizarClientes.UseVisualStyleBackColor = false;
@@ -111,9 +124,10 @@
             // btnModificarCliente
             // 
             btnModificarCliente.BackColor = Color.Transparent;
-            btnModificarCliente.Location = new Point(244, 19);
+            btnModificarCliente.Location = new Point(279, 25);
+            btnModificarCliente.Margin = new Padding(3, 4, 3, 4);
             btnModificarCliente.Name = "btnModificarCliente";
-            btnModificarCliente.Size = new Size(113, 43);
+            btnModificarCliente.Size = new Size(129, 57);
             btnModificarCliente.TabIndex = 4;
             btnModificarCliente.Text = "Modificar cliente";
             btnModificarCliente.UseVisualStyleBackColor = false;
@@ -121,18 +135,20 @@
             // chkActivos
             // 
             chkActivos.AutoSize = true;
-            chkActivos.Location = new Point(696, 43);
+            chkActivos.Location = new Point(795, 57);
+            chkActivos.Margin = new Padding(3, 4, 3, 4);
             chkActivos.Name = "chkActivos";
-            chkActivos.Size = new Size(89, 19);
+            chkActivos.Size = new Size(111, 24);
             chkActivos.TabIndex = 3;
             chkActivos.Text = "Solo activos";
             chkActivos.UseVisualStyleBackColor = true;
             // 
             // btnBajaCliente
             // 
-            btnBajaCliente.Location = new Point(125, 19);
+            btnBajaCliente.Location = new Point(143, 25);
+            btnBajaCliente.Margin = new Padding(3, 4, 3, 4);
             btnBajaCliente.Name = "btnBajaCliente";
-            btnBajaCliente.Size = new Size(113, 43);
+            btnBajaCliente.Size = new Size(129, 57);
             btnBajaCliente.TabIndex = 2;
             btnBajaCliente.Text = "Dar de baja";
             btnBajaCliente.UseVisualStyleBackColor = true;
@@ -140,9 +156,10 @@
             // btnNuevoCliente
             // 
             btnNuevoCliente.BackColor = Color.Transparent;
-            btnNuevoCliente.Location = new Point(6, 19);
+            btnNuevoCliente.Location = new Point(7, 25);
+            btnNuevoCliente.Margin = new Padding(3, 4, 3, 4);
             btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new Size(113, 43);
+            btnNuevoCliente.Size = new Size(129, 57);
             btnNuevoCliente.TabIndex = 1;
             btnNuevoCliente.Text = "Nuevo cliente";
             btnNuevoCliente.UseVisualStyleBackColor = false;
@@ -169,7 +186,8 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvClientes.Location = new Point(6, 82);
+            dgvClientes.Location = new Point(7, 109);
+            dgvClientes.Margin = new Padding(3, 4, 3, 4);
             dgvClientes.MultiSelect = false;
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
@@ -181,36 +199,97 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvClientes.RowHeadersWidth = 51;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClientes.Size = new Size(778, 319);
+            dgvClientes.Size = new Size(889, 425);
             dgvClientes.TabIndex = 0;
             // 
             // tabMascotas
             // 
-            tabMascotas.Location = new Point(4, 24);
+            tabMascotas.Controls.Add(dgvMascotas);
+            tabMascotas.Controls.Add(btnBajaMascota);
+            tabMascotas.Controls.Add(btnNuevaMascota);
+            tabMascotas.Location = new Point(4, 29);
+            tabMascotas.Margin = new Padding(3, 4, 3, 4);
             tabMascotas.Name = "tabMascotas";
-            tabMascotas.Padding = new Padding(3);
-            tabMascotas.Size = new Size(787, 419);
+            tabMascotas.Padding = new Padding(3, 4, 3, 4);
+            tabMascotas.Size = new Size(901, 563);
             tabMascotas.TabIndex = 3;
             tabMascotas.Text = "Mascotas";
             tabMascotas.UseVisualStyleBackColor = true;
             // 
+            // dgvMascotas
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvMascotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgvMascotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvMascotas.DefaultCellStyle = dataGridViewCellStyle5;
+            dgvMascotas.Location = new Point(15, 118);
+            dgvMascotas.Name = "dgvMascotas";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvMascotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dgvMascotas.RowHeadersWidth = 51;
+            dgvMascotas.Size = new Size(877, 438);
+            dgvMascotas.TabIndex = 2;
+            dgvMascotas.CellContentClick += dgvMascotas_CellContentClick;
+            // 
+            // btnBajaMascota
+            // 
+            btnBajaMascota.Location = new Point(207, 41);
+            btnBajaMascota.Name = "btnBajaMascota";
+            btnBajaMascota.Size = new Size(170, 51);
+            btnBajaMascota.TabIndex = 1;
+            btnBajaMascota.Text = "Dar de baja";
+            btnBajaMascota.UseVisualStyleBackColor = true;
+            btnBajaMascota.Click += btnBajaMascota_Click;
+            // 
+            // btnNuevaMascota
+            // 
+            btnNuevaMascota.Location = new Point(15, 41);
+            btnNuevaMascota.Name = "btnNuevaMascota";
+            btnNuevaMascota.Size = new Size(186, 51);
+            btnNuevaMascota.TabIndex = 0;
+            btnNuevaMascota.Text = "+ Nueva Mascota";
+            btnNuevaMascota.UseVisualStyleBackColor = true;
+            btnNuevaMascota.Click += btnNuevaMascota_Click;
+            // 
             // tabVeterinarios
             // 
-            tabVeterinarios.Location = new Point(4, 24);
+            tabVeterinarios.Location = new Point(4, 29);
+            tabVeterinarios.Margin = new Padding(3, 4, 3, 4);
             tabVeterinarios.Name = "tabVeterinarios";
-            tabVeterinarios.Padding = new Padding(3);
-            tabVeterinarios.Size = new Size(787, 419);
+            tabVeterinarios.Padding = new Padding(3, 4, 3, 4);
+            tabVeterinarios.Size = new Size(901, 563);
             tabVeterinarios.TabIndex = 4;
             tabVeterinarios.Text = "Veterinarios";
             tabVeterinarios.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(tabControl);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -218,6 +297,8 @@
             tabClientes.ResumeLayout(false);
             tabClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
+            tabMascotas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvMascotas).EndInit();
             ResumeLayout(false);
         }
 
@@ -235,5 +316,8 @@
         private DataGridView dgvClientes;
         private Button btnModificarCliente;
         private Button btnActualizarClientes;
+        private Button btnNuevaMascota;
+        private Button btnBajaMascota;
+        private DataGridView dgvMascotas;
     }
 }
