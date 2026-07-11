@@ -35,14 +35,14 @@
             tabTurnos = new TabPage();
             tabHistorial = new TabPage();
             tabClientes = new TabPage();
+            btnActualizarClientes = new Button();
+            btnModificarCliente = new Button();
+            chkActivos = new CheckBox();
+            btnBajaCliente = new Button();
+            btnNuevoCliente = new Button();
+            dgvClientes = new DataGridView();
             tabMascotas = new TabPage();
             tabVeterinarios = new TabPage();
-            dgvClientes = new DataGridView();
-            btnNuevoCliente = new Button();
-            btnBajaCliente = new Button();
-            chkActivos = new CheckBox();
-            btnModificarCliente = new Button();
-            btnActualizarClientes = new Button();
             tabControl.SuspendLayout();
             tabClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
@@ -98,25 +98,55 @@
             tabClientes.Text = "Clientes";
             tabClientes.UseVisualStyleBackColor = true;
             // 
-            // tabMascotas
+            // btnActualizarClientes
             // 
-            tabMascotas.Location = new Point(4, 24);
-            tabMascotas.Name = "tabMascotas";
-            tabMascotas.Padding = new Padding(3);
-            tabMascotas.Size = new Size(787, 419);
-            tabMascotas.TabIndex = 3;
-            tabMascotas.Text = "Mascotas";
-            tabMascotas.UseVisualStyleBackColor = true;
+            btnActualizarClientes.BackColor = Color.Transparent;
+            btnActualizarClientes.Location = new Point(581, 34);
+            btnActualizarClientes.Name = "btnActualizarClientes";
+            btnActualizarClientes.Size = new Size(95, 28);
+            btnActualizarClientes.TabIndex = 5;
+            btnActualizarClientes.Text = "Actualizar";
+            btnActualizarClientes.UseVisualStyleBackColor = false;
             // 
-            // tabVeterinarios
+            // btnModificarCliente
             // 
-            tabVeterinarios.Location = new Point(4, 24);
-            tabVeterinarios.Name = "tabVeterinarios";
-            tabVeterinarios.Padding = new Padding(3);
-            tabVeterinarios.Size = new Size(787, 419);
-            tabVeterinarios.TabIndex = 4;
-            tabVeterinarios.Text = "Veterinarios";
-            tabVeterinarios.UseVisualStyleBackColor = true;
+            btnModificarCliente.BackColor = Color.Transparent;
+            btnModificarCliente.Location = new Point(244, 19);
+            btnModificarCliente.Name = "btnModificarCliente";
+            btnModificarCliente.Size = new Size(113, 43);
+            btnModificarCliente.TabIndex = 4;
+            btnModificarCliente.Text = "Modificar cliente";
+            btnModificarCliente.UseVisualStyleBackColor = false;
+            // 
+            // chkActivos
+            // 
+            chkActivos.AutoSize = true;
+            chkActivos.Location = new Point(696, 43);
+            chkActivos.Name = "chkActivos";
+            chkActivos.Size = new Size(89, 19);
+            chkActivos.TabIndex = 3;
+            chkActivos.Text = "Solo activos";
+            chkActivos.UseVisualStyleBackColor = true;
+            // 
+            // btnBajaCliente
+            // 
+            btnBajaCliente.Location = new Point(125, 19);
+            btnBajaCliente.Name = "btnBajaCliente";
+            btnBajaCliente.Size = new Size(113, 43);
+            btnBajaCliente.TabIndex = 2;
+            btnBajaCliente.Text = "Dar de baja";
+            btnBajaCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevoCliente
+            // 
+            btnNuevoCliente.BackColor = Color.Transparent;
+            btnNuevoCliente.Location = new Point(6, 19);
+            btnNuevoCliente.Name = "btnNuevoCliente";
+            btnNuevoCliente.Size = new Size(113, 43);
+            btnNuevoCliente.TabIndex = 1;
+            btnNuevoCliente.Text = "Nuevo cliente";
+            btnNuevoCliente.UseVisualStyleBackColor = false;
+            btnNuevoCliente.Click += btnNuevoCliente_Click;
             // 
             // dgvClientes
             // 
@@ -155,54 +185,25 @@
             dgvClientes.Size = new Size(778, 319);
             dgvClientes.TabIndex = 0;
             // 
-            // btnNuevoCliente
+            // tabMascotas
             // 
-            btnNuevoCliente.BackColor = Color.Transparent;
-            btnNuevoCliente.Location = new Point(6, 19);
-            btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new Size(113, 43);
-            btnNuevoCliente.TabIndex = 1;
-            btnNuevoCliente.Text = "Nuevo cliente";
-            btnNuevoCliente.UseVisualStyleBackColor = false;
+            tabMascotas.Location = new Point(4, 24);
+            tabMascotas.Name = "tabMascotas";
+            tabMascotas.Padding = new Padding(3);
+            tabMascotas.Size = new Size(787, 419);
+            tabMascotas.TabIndex = 3;
+            tabMascotas.Text = "Mascotas";
+            tabMascotas.UseVisualStyleBackColor = true;
             // 
-            // btnBajaCliente
+            // tabVeterinarios
             // 
-            btnBajaCliente.Location = new Point(125, 19);
-            btnBajaCliente.Name = "btnBajaCliente";
-            btnBajaCliente.Size = new Size(113, 43);
-            btnBajaCliente.TabIndex = 2;
-            btnBajaCliente.Text = "Dar de baja";
-            btnBajaCliente.UseVisualStyleBackColor = true;
-            // 
-            // chkActivos
-            // 
-            chkActivos.AutoSize = true;
-            chkActivos.Location = new Point(696, 43);
-            chkActivos.Name = "chkActivos";
-            chkActivos.Size = new Size(89, 19);
-            chkActivos.TabIndex = 3;
-            chkActivos.Text = "Solo activos";
-            chkActivos.UseVisualStyleBackColor = true;
-            // 
-            // btnModificarCliente
-            // 
-            btnModificarCliente.BackColor = Color.Transparent;
-            btnModificarCliente.Location = new Point(244, 19);
-            btnModificarCliente.Name = "btnModificarCliente";
-            btnModificarCliente.Size = new Size(113, 43);
-            btnModificarCliente.TabIndex = 4;
-            btnModificarCliente.Text = "Modificar cliente";
-            btnModificarCliente.UseVisualStyleBackColor = false;
-            // 
-            // btnActualizarClientes
-            // 
-            btnActualizarClientes.BackColor = Color.Transparent;
-            btnActualizarClientes.Location = new Point(581, 34);
-            btnActualizarClientes.Name = "btnActualizarClientes";
-            btnActualizarClientes.Size = new Size(95, 28);
-            btnActualizarClientes.TabIndex = 5;
-            btnActualizarClientes.Text = "Actualizar";
-            btnActualizarClientes.UseVisualStyleBackColor = false;
+            tabVeterinarios.Location = new Point(4, 24);
+            tabVeterinarios.Name = "tabVeterinarios";
+            tabVeterinarios.Padding = new Padding(3);
+            tabVeterinarios.Size = new Size(787, 419);
+            tabVeterinarios.TabIndex = 4;
+            tabVeterinarios.Text = "Veterinarios";
+            tabVeterinarios.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -212,6 +213,7 @@
             Controls.Add(tabControl);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             tabControl.ResumeLayout(false);
             tabClientes.ResumeLayout(false);
             tabClientes.PerformLayout();
