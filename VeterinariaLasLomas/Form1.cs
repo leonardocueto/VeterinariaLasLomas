@@ -1,6 +1,8 @@
 using BE;
 using BE.DTO;
 using BLL;
+using System.Linq;
+
 
 namespace VeterinariaLasLomas
 {
@@ -19,6 +21,15 @@ namespace VeterinariaLasLomas
             ActualizarGridCliente();
 
             // MASCOTAS
+            ActualizarGridMascota();
+        }
+
+        private void btnNuevaMascota_Click(object sender, EventArgs e)
+        {
+            FormMascotaAM formulario = new FormMascotaAM();
+
+            formulario.ShowDialog();
+
             ActualizarGridMascota();
         }
 
@@ -140,12 +151,24 @@ namespace VeterinariaLasLomas
         {
             try
             {
-                dgvMascotas.DataSource = null;
-                dgvMascotas.DataSource = bllMascota.GetAll();
+                List<DTOMascota> mascotas =
+                    bllMascota.GetAllDTO();
 
-                if (dgvMascotas.Columns["IdMascota"] != null)
+                if (cbMascotas.Checked)
                 {
-                    dgvMascotas.Columns["IdMascota"].HeaderText = "Id";
+                    mascotas = mascotas
+                        .Where(m => m.Activo)
+                        .ToList();
+                }
+
+                dgvMascotas.DataSource = null;
+                dgvMascotas.DataSource = mascotas;
+                dgvMascotas.Columns["Id"].Visible = false;
+                dgvMascotas.Columns["Activo"].Visible = false;
+
+                if (dgvMascotas.Columns["Id"] != null)
+                {
+                    dgvMascotas.Columns["Id"].HeaderText = "Id";
                 }
 
                 if (dgvMascotas.Columns["FechaNacimiento"] != null)
@@ -154,15 +177,15 @@ namespace VeterinariaLasLomas
                         "Fecha de nacimiento";
                 }
 
-                if (dgvMascotas.Columns["Cliente"] != null)
+                if (dgvMascotas.Columns["Dueño"] != null)
                 {
-                    dgvMascotas.Columns["Cliente"].HeaderText = "Dueño";
+                    dgvMascotas.Columns["Dueño"].HeaderText = "Dueño";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "No se pudieron cargar las mascotas.\n\n" + ex.Message,
+                    ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -170,90 +193,68 @@ namespace VeterinariaLasLomas
             }
         }
 
-        private void btnNuevaMascota_Click(
-            object sender,
-            EventArgs e)
-        {
-            FormMascotaAM formMascotaAM = new FormMascotaAM();
-
-            formMascotaAM.ShowDialog();
-
-            // Actualiza la grilla cuando se cierra el formulario.
-            ActualizarGridMascota();
-        }
-
-        private void btnBajaMascota_Click(
-            object sender,
-            EventArgs e)
+        private void btnBajaMascota_Click(object sender, EventArgs e)
         {
             if (dgvMascotas.CurrentRow == null)
             {
                 MessageBox.Show(
-                    "Debe seleccionar una mascota.",
-                    "Atención",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
+                    "Debe seleccionar una mascota para dar de baja."
                 );
 
-                return;
-            }
-
-            BEMascota mascotaSeleccionada =
-                dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
-
-            if (mascotaSeleccionada == null)
-            {
-                MessageBox.Show(
-                    "No se pudo obtener la mascota seleccionada.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
-                return;
-            }
-
-            if (!mascotaSeleccionada.Activo)
-            {
-                MessageBox.Show(
-                    "La mascota seleccionada ya se encuentra inactiva.",
-                    "Atención",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
-                return;
-            }
-
-            DialogResult respuesta = MessageBox.Show(
-                $"¿Desea dar de baja a {mascotaSeleccionada.Nombre}?",
-                "Confirmar baja",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (respuesta != DialogResult.Yes)
-            {
                 return;
             }
 
             try
             {
-                bllMascota.DarDeBaja(mascotaSeleccionada);
+                // Obtiene el DTO de la fila
+                DTOMascota dto =
+                    dgvMascotas.CurrentRow.DataBoundItem as DTOMascota;
 
-                MessageBox.Show(
-                    "La mascota fue dada de baja correctamente.",
-                    "Baja realizada",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
+                if (dto == null)
+                {
+                    MessageBox.Show(
+                        "No se pudo obtener la mascota seleccionada."
+                    );
+
+                    return;
+                }
+
+                // Busca la mascota completa
+                BEMascota mascota =
+                    bllMascota.GetById(dto.Id);
+
+                if (mascota == null)
+                {
+                    MessageBox.Show(
+                        "No se encontró la mascota seleccionada."
+                    );
+
+                    return;
+                }
+
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Está segura de que desea dar de baja a " +
+                    mascota.Nombre + "?",
+                    "Confirmar baja",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
                 );
 
-                ActualizarGridMascota();
+                if (respuesta == DialogResult.Yes)
+                {
+                    bllMascota.DarDeBaja(mascota);
+
+                    MessageBox.Show(
+                        "Mascota dada de baja correctamente."
+                    );
+
+                    ActualizarGridMascota();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "No se pudo dar de baja la mascota.\n\n" + ex.Message,
+                    ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -270,31 +271,54 @@ namespace VeterinariaLasLomas
 
         private void btnModificarMascota_Click(object sender, EventArgs e)
         {
+            if (dgvMascotas.CurrentRow == null)
+            {
+                MessageBox.Show(
+                    "Debe seleccionar una mascota para modificar."
+                );
+
+                return;
+            }
 
             try
             {
-                if (dgvMascotas.CurrentRow == null)
+                // Obtiene el DTO que está guardado en la fila seleccionada
+                DTOMascota dto =
+                    dgvMascotas.CurrentRow.DataBoundItem as DTOMascota;
+
+                if (dto == null)
                 {
                     MessageBox.Show(
-                        "Debe seleccionar una mascota.",
-                        "Atención",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
+                        "No se pudo obtener la mascota seleccionada."
                     );
+
                     return;
                 }
-                BEMascota mascotaSeleccionada =
-                    dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
-                FormMascotaAM formMascotaAM = new FormMascotaAM(mascotaSeleccionada);
-                if(formMascotaAM.ShowDialog() == DialogResult.OK)
+
+                // Busca la entidad completa mediante el ID del DTO
+                BEMascota mascota =
+                    bllMascota.GetById(dto.Id);
+
+                if (mascota == null)
                 {
-                    ActualizarGridMascota();
+                    MessageBox.Show(
+                        "No se encontró la mascota seleccionada."
+                    );
+
+                    return;
                 }
+
+                FormMascotaAM formulario =
+                    new FormMascotaAM(mascota);
+
+                formulario.ShowDialog();
+
+                ActualizarGridMascota();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Ocurrió un error al intentar modificar la mascota.\n\n" + ex.Message,
+                    ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -302,6 +326,9 @@ namespace VeterinariaLasLomas
             }
         }
 
-
+        private void cbMascotas_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarGridMascota();
+        }
     }
 }

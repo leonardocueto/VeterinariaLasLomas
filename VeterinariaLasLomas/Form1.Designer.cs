@@ -50,6 +50,7 @@
             btnBajaMascota = new Button();
             btnNuevaMascota = new Button();
             tabVeterinarios = new TabPage();
+            cbMascotas = new CheckBox();
             tabControl.SuspendLayout();
             tabClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
@@ -218,6 +219,7 @@
             // 
             // tabMascotas
             // 
+            tabMascotas.Controls.Add(cbMascotas);
             tabMascotas.Controls.Add(btnModificarMascota);
             tabMascotas.Controls.Add(dgvMascotas);
             tabMascotas.Controls.Add(btnBajaMascota);
@@ -307,6 +309,17 @@
             tabVeterinarios.Text = "Veterinarios";
             tabVeterinarios.UseVisualStyleBackColor = true;
             // 
+            // cbMascotas
+            // 
+            cbMascotas.AutoSize = true;
+            cbMascotas.Location = new Point(784, 55);
+            cbMascotas.Name = "cbMascotas";
+            cbMascotas.Size = new Size(111, 24);
+            cbMascotas.TabIndex = 4;
+            cbMascotas.Text = "Solo activos";
+            cbMascotas.UseVisualStyleBackColor = true;
+            cbMascotas.CheckedChanged += cbMascotas_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -322,6 +335,7 @@
             tabClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             tabMascotas.ResumeLayout(false);
+            tabMascotas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMascotas).EndInit();
             ResumeLayout(false);
         }
@@ -344,5 +358,6 @@
         private Button btnBajaMascota;
         private DataGridView dgvMascotas;
         private Button btnModificarMascota;
+        private CheckBox cbMascotas;
     }
 }

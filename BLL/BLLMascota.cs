@@ -1,5 +1,7 @@
 ﻿using BE;
+using BE.DTO;
 using DAL;
+using Mapper;
 using System;
 using System.Collections.Generic;
 using System.Transactions;
@@ -92,6 +94,40 @@ namespace BLL
             }
         }
 
+        public List<DTOMascota> GetAllDTO()
+        {
+            try
+            {
+                List<BEMascota> mascotas =
+                    dalMascota.GetAll();
+
+                return MapperMascota.Map(mascotas);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "No se pudo obtener la lista de mascotas. " +
+                    ex.Message,
+                    ex
+                );
+            }
+        }
+
+        public BEMascota GetById(int id)
+        {
+            try
+            {
+                return dalMascota.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "No se pudo obtener la mascota. " +
+                    ex.Message,
+                    ex
+                );
+            }
+        }
         public void Guardar(BEMascota mascota)
         {
             try
