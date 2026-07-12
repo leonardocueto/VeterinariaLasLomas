@@ -59,6 +59,7 @@
             btnBajaMascota = new Button();
             btnNuevaMascota = new Button();
             tabVeterinarios = new TabPage();
+            btnEspecialidad = new Button();
             tabControl.SuspendLayout();
             tabHistorial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
@@ -66,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             tabMascotas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMascotas).BeginInit();
+            tabVeterinarios.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl
@@ -76,26 +78,25 @@
             tabControl.Controls.Add(tabMascotas);
             tabControl.Controls.Add(tabVeterinarios);
             tabControl.Font = new Font("Segoe UI", 9F);
-            tabControl.Location = new Point(6, 3);
-            tabControl.Margin = new Padding(3, 4, 3, 4);
+            tabControl.Location = new Point(5, 2);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(909, 596);
+            tabControl.Size = new Size(795, 447);
             tabControl.TabIndex = 0;
             // 
             // tabTurnos
             // 
-            tabTurnos.Location = new Point(4, 29);
-            tabTurnos.Margin = new Padding(3, 4, 3, 4);
+            tabTurnos.Location = new Point(4, 24);
             tabTurnos.Name = "tabTurnos";
-            tabTurnos.Padding = new Padding(3, 4, 3, 4);
-            tabTurnos.Size = new Size(901, 563);
+            tabTurnos.Padding = new Padding(3, 3, 3, 3);
+            tabTurnos.Size = new Size(787, 419);
             tabTurnos.TabIndex = 0;
             tabTurnos.Text = "Turnos";
             tabTurnos.UseVisualStyleBackColor = true;
             // 
             // tabHistorial
             // 
+            tabHistorial.Location = new Point(4, 24);
             tabHistorial.Controls.Add(dgvHistorial);
             tabHistorial.Controls.Add(cbMascota);
             tabHistorial.Controls.Add(cbDuenio);
@@ -104,8 +105,8 @@
             tabHistorial.Location = new Point(4, 29);
             tabHistorial.Margin = new Padding(3, 4, 3, 4);
             tabHistorial.Name = "tabHistorial";
-            tabHistorial.Padding = new Padding(3, 4, 3, 4);
-            tabHistorial.Size = new Size(901, 563);
+            tabHistorial.Padding = new Padding(3, 3, 3, 3);
+            tabHistorial.Size = new Size(787, 419);
             tabHistorial.TabIndex = 1;
             tabHistorial.Text = "Historial";
             tabHistorial.UseVisualStyleBackColor = true;
@@ -187,11 +188,10 @@
             tabClientes.Controls.Add(btnBajaCliente);
             tabClientes.Controls.Add(btnNuevoCliente);
             tabClientes.Controls.Add(dgvClientes);
-            tabClientes.Location = new Point(4, 29);
-            tabClientes.Margin = new Padding(3, 4, 3, 4);
+            tabClientes.Location = new Point(4, 24);
             tabClientes.Name = "tabClientes";
-            tabClientes.Padding = new Padding(3, 4, 3, 4);
-            tabClientes.Size = new Size(901, 563);
+            tabClientes.Padding = new Padding(3, 3, 3, 3);
+            tabClientes.Size = new Size(787, 419);
             tabClientes.TabIndex = 2;
             tabClientes.Text = "Clientes";
             tabClientes.UseVisualStyleBackColor = true;
@@ -200,10 +200,9 @@
             // 
             btnActualizarClientes.BackColor = Color.Transparent;
             btnActualizarClientes.Cursor = Cursors.Hand;
-            btnActualizarClientes.Location = new Point(664, 45);
-            btnActualizarClientes.Margin = new Padding(3, 4, 3, 4);
+            btnActualizarClientes.Location = new Point(581, 34);
             btnActualizarClientes.Name = "btnActualizarClientes";
-            btnActualizarClientes.Size = new Size(109, 37);
+            btnActualizarClientes.Size = new Size(95, 28);
             btnActualizarClientes.TabIndex = 5;
             btnActualizarClientes.Text = "Actualizar";
             btnActualizarClientes.UseVisualStyleBackColor = false;
@@ -213,10 +212,9 @@
             // 
             btnModificarCliente.BackColor = Color.Transparent;
             btnModificarCliente.Cursor = Cursors.Hand;
-            btnModificarCliente.Location = new Point(279, 25);
-            btnModificarCliente.Margin = new Padding(3, 4, 3, 4);
+            btnModificarCliente.Location = new Point(244, 19);
             btnModificarCliente.Name = "btnModificarCliente";
-            btnModificarCliente.Size = new Size(129, 57);
+            btnModificarCliente.Size = new Size(113, 43);
             btnModificarCliente.TabIndex = 4;
             btnModificarCliente.Text = "Modificar cliente";
             btnModificarCliente.UseVisualStyleBackColor = false;
@@ -228,10 +226,9 @@
             chkActivos.Checked = true;
             chkActivos.CheckState = CheckState.Checked;
             chkActivos.Cursor = Cursors.Hand;
-            chkActivos.Location = new Point(795, 57);
-            chkActivos.Margin = new Padding(3, 4, 3, 4);
+            chkActivos.Location = new Point(696, 43);
             chkActivos.Name = "chkActivos";
-            chkActivos.Size = new Size(111, 24);
+            chkActivos.Size = new Size(89, 19);
             chkActivos.TabIndex = 3;
             chkActivos.Text = "Solo activos";
             chkActivos.UseVisualStyleBackColor = true;
@@ -240,10 +237,9 @@
             // btnBajaCliente
             // 
             btnBajaCliente.Cursor = Cursors.Hand;
-            btnBajaCliente.Location = new Point(143, 25);
-            btnBajaCliente.Margin = new Padding(3, 4, 3, 4);
+            btnBajaCliente.Location = new Point(125, 19);
             btnBajaCliente.Name = "btnBajaCliente";
-            btnBajaCliente.Size = new Size(129, 57);
+            btnBajaCliente.Size = new Size(113, 43);
             btnBajaCliente.TabIndex = 2;
             btnBajaCliente.Text = "Dar de baja";
             btnBajaCliente.UseVisualStyleBackColor = true;
@@ -253,10 +249,9 @@
             // 
             btnNuevoCliente.BackColor = Color.Transparent;
             btnNuevoCliente.Cursor = Cursors.Hand;
-            btnNuevoCliente.Location = new Point(7, 25);
-            btnNuevoCliente.Margin = new Padding(3, 4, 3, 4);
+            btnNuevoCliente.Location = new Point(6, 19);
             btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new Size(129, 57);
+            btnNuevoCliente.Size = new Size(113, 43);
             btnNuevoCliente.TabIndex = 1;
             btnNuevoCliente.Text = "+ Nuevo cliente";
             btnNuevoCliente.UseVisualStyleBackColor = false;
@@ -275,6 +270,15 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvClientes.Location = new Point(6, 82);
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Window;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
@@ -298,7 +302,7 @@
             dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvClientes.RowHeadersWidth = 51;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClientes.Size = new Size(889, 425);
+            dgvClientes.Size = new Size(778, 319);
             dgvClientes.TabIndex = 0;
             // 
             // tabMascotas
@@ -308,11 +312,10 @@
             tabMascotas.Controls.Add(dgvMascotas);
             tabMascotas.Controls.Add(btnBajaMascota);
             tabMascotas.Controls.Add(btnNuevaMascota);
-            tabMascotas.Location = new Point(4, 29);
-            tabMascotas.Margin = new Padding(3, 4, 3, 4);
+            tabMascotas.Location = new Point(4, 24);
             tabMascotas.Name = "tabMascotas";
-            tabMascotas.Padding = new Padding(3, 4, 3, 4);
-            tabMascotas.Size = new Size(901, 563);
+            tabMascotas.Padding = new Padding(3, 3, 3, 3);
+            tabMascotas.Size = new Size(787, 419);
             tabMascotas.TabIndex = 3;
             tabMascotas.Text = "Mascotas";
             tabMascotas.UseVisualStyleBackColor = true;
@@ -330,10 +333,9 @@
             // 
             // btnModificarMascota
             // 
-            btnModificarMascota.Location = new Point(383, 41);
-            btnModificarMascota.Margin = new Padding(3, 4, 3, 4);
+            btnModificarMascota.Location = new Point(335, 31);
             btnModificarMascota.Name = "btnModificarMascota";
-            btnModificarMascota.Size = new Size(191, 51);
+            btnModificarMascota.Size = new Size(167, 38);
             btnModificarMascota.TabIndex = 3;
             btnModificarMascota.Text = "Modificar Mascota";
             btnModificarMascota.UseVisualStyleBackColor = true;
@@ -350,6 +352,16 @@
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
             dgvMascotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvMascotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvMascotas.DefaultCellStyle = dataGridViewCellStyle5;
+            dgvMascotas.Location = new Point(13, 88);
+            dgvMascotas.Margin = new Padding(3, 2, 3, 2);
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = SystemColors.Window;
             dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
@@ -369,15 +381,16 @@
             dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
             dgvMascotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvMascotas.RowHeadersWidth = 51;
-            dgvMascotas.Size = new Size(877, 437);
+            dgvMascotas.Size = new Size(767, 328);
             dgvMascotas.TabIndex = 2;
             dgvMascotas.CellContentClick += dgvMascotas_CellContentClick;
             // 
             // btnBajaMascota
             // 
-            btnBajaMascota.Location = new Point(207, 41);
+            btnBajaMascota.Location = new Point(181, 31);
+            btnBajaMascota.Margin = new Padding(3, 2, 3, 2);
             btnBajaMascota.Name = "btnBajaMascota";
-            btnBajaMascota.Size = new Size(170, 51);
+            btnBajaMascota.Size = new Size(149, 38);
             btnBajaMascota.TabIndex = 1;
             btnBajaMascota.Text = "Dar de baja";
             btnBajaMascota.UseVisualStyleBackColor = true;
@@ -385,9 +398,10 @@
             // 
             // btnNuevaMascota
             // 
-            btnNuevaMascota.Location = new Point(15, 41);
+            btnNuevaMascota.Location = new Point(13, 31);
+            btnNuevaMascota.Margin = new Padding(3, 2, 3, 2);
             btnNuevaMascota.Name = "btnNuevaMascota";
-            btnNuevaMascota.Size = new Size(186, 51);
+            btnNuevaMascota.Size = new Size(163, 38);
             btnNuevaMascota.TabIndex = 0;
             btnNuevaMascota.Text = "+ Nueva Mascota";
             btnNuevaMascota.UseVisualStyleBackColor = true;
@@ -395,22 +409,33 @@
             // 
             // tabVeterinarios
             // 
-            tabVeterinarios.Location = new Point(4, 29);
-            tabVeterinarios.Margin = new Padding(3, 4, 3, 4);
+            tabVeterinarios.Controls.Add(btnEspecialidad);
+            tabVeterinarios.Location = new Point(4, 24);
             tabVeterinarios.Name = "tabVeterinarios";
-            tabVeterinarios.Padding = new Padding(3, 4, 3, 4);
-            tabVeterinarios.Size = new Size(901, 563);
+            tabVeterinarios.Padding = new Padding(3, 3, 3, 3);
+            tabVeterinarios.Size = new Size(787, 419);
             tabVeterinarios.TabIndex = 4;
             tabVeterinarios.Text = "Veterinarios";
             tabVeterinarios.UseVisualStyleBackColor = true;
             // 
+            // btnEspecialidad
+            // 
+            btnEspecialidad.BackColor = Color.Transparent;
+            btnEspecialidad.Cursor = Cursors.Hand;
+            btnEspecialidad.Location = new Point(245, 20);
+            btnEspecialidad.Name = "btnEspecialidad";
+            btnEspecialidad.Size = new Size(113, 43);
+            btnEspecialidad.TabIndex = 2;
+            btnEspecialidad.Text = "Especialidades";
+            btnEspecialidad.UseVisualStyleBackColor = false;
+            btnEspecialidad.Click += btnEspecialidad_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(tabControl);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -424,6 +449,7 @@
             tabMascotas.ResumeLayout(false);
             tabMascotas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMascotas).EndInit();
+            tabVeterinarios.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -445,6 +471,7 @@
         private Button btnBajaMascota;
         private DataGridView dgvMascotas;
         private Button btnModificarMascota;
+        private Button btnEspecialidad;
         private CheckBox cbMascotas;
         private DataGridView dgvHistorial;
         private ComboBox cbMascota;

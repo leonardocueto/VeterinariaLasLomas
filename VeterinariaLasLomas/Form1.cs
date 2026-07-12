@@ -402,6 +402,10 @@ namespace VeterinariaLasLomas
                     dgvHistorial.Columns["Duenio"].HeaderText =
                         "Dueño";
                 }
+                BEMascota mascotaSeleccionada =
+                    dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
+                FormMascotaAM formMascotaAM = new FormMascotaAM(mascotaSeleccionada);
+                if (formMascotaAM.ShowDialog() == DialogResult.OK)
 
                 if (dgvHistorial.Columns["Fecha"] != null)
                 {
@@ -427,6 +431,11 @@ namespace VeterinariaLasLomas
             }
         }
 
+        // -------------------- Especialidades --------------------
+        private void btnEspecialidad_Click(object sender, EventArgs e)
+        {
+            FormEspecialidades formEspecialidades = new FormEspecialidades();
+            formEspecialidades.ShowDialog();
 
         private void cbMascotas_CheckedChanged(object sender, EventArgs e)
         {
