@@ -286,12 +286,12 @@ namespace VeterinariaLasLomas
                 BEMascota mascotaSeleccionada =
                     dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
                 FormMascotaAM formMascotaAM = new FormMascotaAM(mascotaSeleccionada);
-                if(formMascotaAM.ShowDialog() == DialogResult.OK)
+                if (formMascotaAM.ShowDialog() == DialogResult.OK)
                 {
                     ActualizarGridMascota();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(
                     "Ocurrió un error al intentar modificar la mascota.\n\n" + ex.Message,
@@ -302,6 +302,11 @@ namespace VeterinariaLasLomas
             }
         }
 
-
+        // -------------------- Especialidades --------------------
+        private void btnEspecialidad_Click(object sender, EventArgs e)
+        {
+            FormEspecialidades formEspecialidades = new FormEspecialidades();
+            formEspecialidades.ShowDialog();
+        }
     }
 }
