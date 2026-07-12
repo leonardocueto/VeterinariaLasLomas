@@ -11,6 +11,7 @@ namespace VeterinariaLasLomas
         private BLLCliente bllCliente = new BLLCliente();
         private BLLMascota bllMascota = new BLLMascota();
         private BLLTurno bllTurno = new BLLTurno();
+        private BLLVeterinario bllVeterinario = new BLLVeterinario();
 
         public Form1()
         {
@@ -24,6 +25,7 @@ namespace VeterinariaLasLomas
             // MASCOTAS
             ActualizarGridMascota();
             CargarDuenios();
+            ActualizarGridVeterinario();
         }
 
         private void btnNuevaMascota_Click(object sender, EventArgs e)
@@ -383,41 +385,40 @@ namespace VeterinariaLasLomas
         {
             try
             {
-                List<DTOHistorial> historial =
-                    bllTurno.GetHistorialPorMascota(idMascota);
+              List<DTOHistorial> historial =
+                                    bllTurno.GetHistorialPorMascota(idMascota);
 
-                dgvHistorial.DataSource = null;
-                dgvHistorial.DataSource = historial;
+                                dgvHistorial.DataSource = null;
+                                dgvHistorial.DataSource = historial;
 
-                dgvHistorial.AutoSizeColumnsMode =
-                    DataGridViewAutoSizeColumnsMode.Fill;
+                                dgvHistorial.AutoSizeColumnsMode =
+                                    DataGridViewAutoSizeColumnsMode.Fill;
 
-                dgvHistorial.ReadOnly = true;
-                dgvHistorial.AllowUserToAddRows = false;
-                dgvHistorial.SelectionMode =
-                    DataGridViewSelectionMode.FullRowSelect;
+                                dgvHistorial.ReadOnly = true;
+                                dgvHistorial.AllowUserToAddRows = false;
+                                dgvHistorial.SelectionMode =
+                                    DataGridViewSelectionMode.FullRowSelect;
 
-                if (dgvHistorial.Columns["Duenio"] != null)
-                {
-                    dgvHistorial.Columns["Duenio"].HeaderText =
-                        "Dueño";
-                }
-                BEMascota mascotaSeleccionada =
-                    dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
-                FormMascotaAM formMascotaAM = new FormMascotaAM(mascotaSeleccionada);
-                if (formMascotaAM.ShowDialog() == DialogResult.OK)
+                                if (dgvHistorial.Columns["Duenio"] != null)
+                                {
+                                    dgvHistorial.Columns["Duenio"].HeaderText =
+                                        "Dueño";
+                                }
+                                BEMascota mascotaSeleccionada = dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
+                                FormMascotaAM formMascotaAM = new FormMascotaAM(mascotaSeleccionada);
+                                if (formMascotaAM.ShowDialog() == DialogResult.OK)
 
-                if (dgvHistorial.Columns["Fecha"] != null)
-                {
-                    dgvHistorial.Columns["Fecha"]
-                        .DefaultCellStyle.Format = "dd/MM/yyyy";
-                }
+                                if (dgvHistorial.Columns["Fecha"] != null)
+                                {
+                                    dgvHistorial.Columns["Fecha"]
+                                        .DefaultCellStyle.Format = "dd/MM/yyyy";
+                                }
 
-                if (dgvHistorial.Columns["Diagnostico"] != null)
-                {
-                    dgvHistorial.Columns["Diagnostico"].HeaderText =
-                        "Diagnóstico";
-                }
+                                if (dgvHistorial.Columns["Diagnostico"] != null)
+                                {
+                                    dgvHistorial.Columns["Diagnostico"].HeaderText =
+                                        "Diagnóstico";
+                                }
             }
             catch (Exception ex)
             {
@@ -431,12 +432,6 @@ namespace VeterinariaLasLomas
             }
         }
 
-        // -------------------- Especialidades --------------------
-        private void btnEspecialidad_Click(object sender, EventArgs e)
-        {
-            FormEspecialidades formEspecialidades = new FormEspecialidades();
-            formEspecialidades.ShowDialog();
-        }
 
         private void cbMascotas_CheckedChanged(object sender, EventArgs e)
         {
@@ -465,6 +460,126 @@ namespace VeterinariaLasLomas
             }
 
             CargarHistorial(mascota.IdMascota);
+        }
+
+        // -------------------- Especialidades --------------------
+        private void btnEspecialidad_Click(object sender, EventArgs e)
+        {
+            FormEspecialidades formEspecialidades = new FormEspecialidades();
+            formEspecialidades.ShowDialog();
+        }
+        // -------------------- Veterinarios --------------------
+        private void ActualizarGridVeterinario()
+        {
+            try
+            {
+                List<DTOVeterinario> veterinarios = bllVeterinario.GetAllDTO();
+
+                if (chkActivosVet.Checked)
+                {
+                    veterinarios = veterinarios.Where(v => v.Activo).ToList();
+                }
+
+                dgvVeterinarios.DataSource = null;
+                dgvVeterinarios.DataSource = veterinarios;
+
+                dgvVeterinarios.Columns["Id"].Visible = false;
+                dgvVeterinarios.Columns["Activo"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnNuevoVet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormVeterinarioAM form = new FormVeterinarioAM();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridVeterinario();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnBajaVet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvVeterinarios.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un veterinario.");
+                    return;
+                }
+
+                DTOVeterinario dto = (DTOVeterinario)dgvVeterinarios.CurrentRow.DataBoundItem;
+
+                DialogResult confirma = MessageBox.Show(
+                    $"¿Dar de baja al veterinario {dto.Apellido}, {dto.Nombre}?",
+                    "Confirmar baja",
+                    MessageBoxButtons.YesNo);
+
+                if (confirma == DialogResult.Yes)
+                {
+                    bllVeterinario.DarDeBaja(dto.Id);
+                    MessageBox.Show("Veterinario dado de baja correctamente.");
+                    ActualizarGridVeterinario();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnModificarVet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvVeterinarios.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un veterinario.");
+                    return;
+                }
+
+                DTOVeterinario dto = (DTOVeterinario)dgvVeterinarios.CurrentRow.DataBoundItem;
+                BEVeterinario seleccionado = bllVeterinario.GetById(dto.Id);
+
+                FormVeterinarioAM form = new FormVeterinarioAM(seleccionado);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridVeterinario();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnActualizarVet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ActualizarGridVeterinario();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void chkActivosVet_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarGridVeterinario();
         }
     }
 }
