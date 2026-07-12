@@ -380,7 +380,6 @@ namespace VeterinariaLasLomas
             cbMascota.SelectedIndex = -1;
         }
 
-
         private void CargarHistorial(int idMascota)
         {
             try
@@ -399,32 +398,25 @@ namespace VeterinariaLasLomas
                                 dgvHistorial.SelectionMode =
                                     DataGridViewSelectionMode.FullRowSelect;
 
-                                if (dgvHistorial.Columns["Duenio"] != null)
-                                {
-                                    dgvHistorial.Columns["Duenio"].HeaderText =
-                                        "Dueño";
-                                }
-                                BEMascota mascotaSeleccionada = dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
-                                FormMascotaAM formMascotaAM = new FormMascotaAM(mascotaSeleccionada);
-                                if (formMascotaAM.ShowDialog() == DialogResult.OK)
+                if (dgvHistorial.Columns["Duenio"] != null)
+                {
+                    dgvHistorial.Columns["Duenio"].HeaderText = "Dueño";
+                }
 
-                                if (dgvHistorial.Columns["Fecha"] != null)
-                                {
-                                    dgvHistorial.Columns["Fecha"]
-                                        .DefaultCellStyle.Format = "dd/MM/yyyy";
-                                }
+                if (dgvHistorial.Columns["Fecha"] != null)
+                {
+                    dgvHistorial.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
 
-                                if (dgvHistorial.Columns["Diagnostico"] != null)
-                                {
-                                    dgvHistorial.Columns["Diagnostico"].HeaderText =
-                                        "Diagnóstico";
-                                }
+                if (dgvHistorial.Columns["Diagnostico"] != null)
+                {
+                    dgvHistorial.Columns["Diagnostico"].HeaderText = "Diagnóstico";
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "No se pudo cargar el historial. " +
-                    ex.Message,
+                    "No se pudo cargar el historial. " + ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
