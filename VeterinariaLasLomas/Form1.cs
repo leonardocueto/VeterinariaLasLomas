@@ -165,7 +165,40 @@ namespace VeterinariaLasLomas
             DataGridViewCellEventArgs e)
         {
             // Este evento no carga la grilla.
-            // Puede permanecer vacío.
+        }
+
+        private void btnModificarMascota_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (dgvMascotas.CurrentRow == null)
+                {
+                    MessageBox.Show(
+                        "Debe seleccionar una mascota.",
+                        "Atención",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+                BEMascota mascotaSeleccionada =
+                    dgvMascotas.CurrentRow.DataBoundItem as BEMascota;
+                FormMascotaAM formMascotaAM = new FormMascotaAM(mascotaSeleccionada);
+                if(formMascotaAM.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridMascota();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al intentar modificar la mascota.\n\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
     }
 }

@@ -8,7 +8,8 @@ namespace BLL
 {
     public class BLLMascota
     {
-        private DALMascota dalMascota = new DALMascota();
+        private readonly DALMascota dalMascota =
+            new DALMascota();
 
         private void ValidarMascota(BEMascota mascota)
         {
@@ -26,7 +27,9 @@ namespace BLL
                 );
             }
 
-            if (mascota.Nombre.Trim().Length < 2)
+            mascota.Nombre = mascota.Nombre.Trim();
+
+            if (mascota.Nombre.Length < 2)
             {
                 throw new Exception(
                     "El nombre debe tener al menos 2 caracteres."
@@ -40,12 +43,16 @@ namespace BLL
                 );
             }
 
+            mascota.Especie = mascota.Especie.Trim();
+
             if (string.IsNullOrWhiteSpace(mascota.Raza))
             {
                 throw new Exception(
                     "Debe ingresar la raza."
                 );
             }
+
+            mascota.Raza = mascota.Raza.Trim();
 
             if (mascota.FechaNacimiento > DateTime.Today)
             {
@@ -60,76 +67,148 @@ namespace BLL
                     "Debe seleccionar un dueño."
                 );
             }
+
+            if (mascota.Cliente.IdCliente <= 0)
+            {
+                throw new Exception(
+                    "El dueño seleccionado no es válido."
+                );
+            }
         }
 
         public List<BEMascota> GetAll()
         {
-            return dalMascota.GetAll();
+            try
+            {
+                return dalMascota.GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "No se pudo obtener la lista de mascotas. " +
+                    ex.Message,
+                    ex
+                );
+            }
         }
 
         public void Guardar(BEMascota mascota)
         {
-            ValidarMascota(mascota);
-            mascota.Activo = true;
-
-            using (TransactionScope trx = new TransactionScope())
+            try
             {
-                dalMascota.Add(mascota);
-                trx.Complete();
+                ValidarMascota(mascota);
+
+                mascota.Activo = true;
+
+                using (TransactionScope trx =
+                    new TransactionScope())
+                {
+                    dalMascota.Add(mascota);
+
+                    trx.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "No se pudo guardar la mascota. " +
+                    ex.Message,
+                    ex
+                );
             }
         }
 
         public void Modificar(BEMascota mascota)
         {
-            ValidarMascota(mascota);
+            try
+            {
+                ValidarMascota(mascota);
 
-            BEMascota existente =
-                dalMascota.GetById(mascota.IdMascota);
+                if (mascota.IdMascota <= 0)
+                {
+                    throw new Exception(
+                        "El identificador de la mascota no es válido."
+                    );
+                }
 
-            if (existente == null)
+                BEMascota existente =
+                    dalMascota.GetById(mascota.IdMascota);
+
+                if (existente == null)
+                {
+                    throw new Exception(
+                        "La mascota no existe."
+                    );
+                }
+
+                using (TransactionScope trx =
+                    new TransactionScope())
+                {
+                    dalMascota.Update(mascota);
+
+                    trx.Complete();
+                }
+            }
+            catch (Exception ex)
             {
                 throw new Exception(
-                    "La mascota no existe."
+                    "No se pudo modificar la mascota. " +
+                    ex.Message,
+                    ex
                 );
-            }
-
-            using (TransactionScope trx = new TransactionScope())
-            {
-                dalMascota.Update(mascota);
-                trx.Complete();
             }
         }
 
         public void DarDeBaja(BEMascota mascota)
         {
-            if (mascota == null)
+            try
+            {
+                if (mascota == null)
+                {
+                    throw new Exception(
+                        "Debe seleccionar una mascota."
+                    );
+                }
+
+                if (mascota.IdMascota <= 0)
+                {
+                    throw new Exception(
+                        "El identificador de la mascota no es válido."
+                    );
+                }
+
+                BEMascota existente =
+                    dalMascota.GetById(mascota.IdMascota);
+
+                if (existente == null)
+                {
+                    throw new Exception(
+                        "La mascota no existe."
+                    );
+                }
+
+                if (!existente.Activo)
+                {
+                    throw new Exception(
+                        "La mascota ya se encuentra inactiva."
+                    );
+                }
+
+                using (TransactionScope trx =
+                    new TransactionScope())
+                {
+                    dalMascota.Delete(mascota.IdMascota);
+
+                    trx.Complete();
+                }
+            }
+            catch (Exception ex)
             {
                 throw new Exception(
-                    "Debe seleccionar una mascota."
+                    "No se pudo dar de baja la mascota. " +
+                    ex.Message,
+                    ex
                 );
-            }
-
-            BEMascota existente =
-                dalMascota.GetById(mascota.IdMascota);
-
-            if (existente == null)
-            {
-                throw new Exception(
-                    "La mascota no existe."
-                );
-            }
-
-            if (!existente.Activo)
-            {
-                throw new Exception(
-                    "La mascota ya se encuentra inactiva."
-                );
-            }
-
-            using (TransactionScope trx = new TransactionScope())
-            {
-                dalMascota.Delete(mascota.IdMascota);
-                trx.Complete();
             }
         }
     }
