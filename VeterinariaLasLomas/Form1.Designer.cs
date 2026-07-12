@@ -37,6 +37,9 @@
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             tabTurnos = new TabPage();
             tabHistorial = new TabPage();
@@ -59,6 +62,12 @@
             btnBajaMascota = new Button();
             btnNuevaMascota = new Button();
             tabVeterinarios = new TabPage();
+            dgvVeterinarios = new DataGridView();
+            btnActualizarVet = new Button();
+            chkActivosVet = new CheckBox();
+            btnModificarVet = new Button();
+            btnBajaVet = new Button();
+            btnNuevoVet = new Button();
             btnEspecialidad = new Button();
             tabControl.SuspendLayout();
             tabHistorial.SuspendLayout();
@@ -68,6 +77,7 @@
             tabMascotas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMascotas).BeginInit();
             tabVeterinarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvVeterinarios).BeginInit();
             SuspendLayout();
             // 
             // tabControl
@@ -88,7 +98,7 @@
             // 
             tabTurnos.Location = new Point(4, 24);
             tabTurnos.Name = "tabTurnos";
-            tabTurnos.Padding = new Padding(3, 3, 3, 3);
+            tabTurnos.Padding = new Padding(3);
             tabTurnos.Size = new Size(787, 419);
             tabTurnos.TabIndex = 0;
             tabTurnos.Text = "Turnos";
@@ -96,16 +106,15 @@
             // 
             // tabHistorial
             // 
-            tabHistorial.Location = new Point(4, 24);
             tabHistorial.Controls.Add(dgvHistorial);
             tabHistorial.Controls.Add(cbMascota);
             tabHistorial.Controls.Add(cbDuenio);
             tabHistorial.Controls.Add(label2);
             tabHistorial.Controls.Add(label1);
-            tabHistorial.Location = new Point(4, 29);
+            tabHistorial.Location = new Point(4, 24);
             tabHistorial.Margin = new Padding(3, 4, 3, 4);
             tabHistorial.Name = "tabHistorial";
-            tabHistorial.Padding = new Padding(3, 3, 3, 3);
+            tabHistorial.Padding = new Padding(3);
             tabHistorial.Size = new Size(787, 419);
             tabHistorial.TabIndex = 1;
             tabHistorial.Text = "Historial";
@@ -149,7 +158,7 @@
             cbMascota.FormattingEnabled = true;
             cbMascota.Location = new Point(548, 62);
             cbMascota.Name = "cbMascota";
-            cbMascota.Size = new Size(234, 28);
+            cbMascota.Size = new Size(234, 23);
             cbMascota.TabIndex = 3;
             cbMascota.SelectedIndexChanged += cbMascota_SelectedIndexChanged;
             // 
@@ -158,7 +167,7 @@
             cbDuenio.FormattingEnabled = true;
             cbDuenio.Location = new Point(55, 62);
             cbDuenio.Name = "cbDuenio";
-            cbDuenio.Size = new Size(234, 28);
+            cbDuenio.Size = new Size(234, 23);
             cbDuenio.TabIndex = 2;
             cbDuenio.SelectedIndexChanged += cbDuenio_SelectedIndexChanged;
             // 
@@ -167,7 +176,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(539, 29);
             label2.Name = "label2";
-            label2.Size = new Size(65, 20);
+            label2.Size = new Size(52, 15);
             label2.TabIndex = 1;
             label2.Text = "Mascota";
             // 
@@ -176,7 +185,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(55, 29);
             label1.Name = "label1";
-            label1.Size = new Size(53, 20);
+            label1.Size = new Size(42, 15);
             label1.TabIndex = 0;
             label1.Text = "Dueño";
             // 
@@ -190,7 +199,7 @@
             tabClientes.Controls.Add(dgvClientes);
             tabClientes.Location = new Point(4, 24);
             tabClientes.Name = "tabClientes";
-            tabClientes.Padding = new Padding(3, 3, 3, 3);
+            tabClientes.Padding = new Padding(3);
             tabClientes.Size = new Size(787, 419);
             tabClientes.TabIndex = 2;
             tabClientes.Text = "Clientes";
@@ -270,15 +279,6 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvClientes.Location = new Point(6, 82);
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Window;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
@@ -314,7 +314,7 @@
             tabMascotas.Controls.Add(btnNuevaMascota);
             tabMascotas.Location = new Point(4, 24);
             tabMascotas.Name = "tabMascotas";
-            tabMascotas.Padding = new Padding(3, 3, 3, 3);
+            tabMascotas.Padding = new Padding(3);
             tabMascotas.Size = new Size(787, 419);
             tabMascotas.TabIndex = 3;
             tabMascotas.Text = "Mascotas";
@@ -325,7 +325,7 @@
             cbMascotas.AutoSize = true;
             cbMascotas.Location = new Point(784, 55);
             cbMascotas.Name = "cbMascotas";
-            cbMascotas.Size = new Size(111, 24);
+            cbMascotas.Size = new Size(89, 19);
             cbMascotas.TabIndex = 4;
             cbMascotas.Text = "Solo activos";
             cbMascotas.UseVisualStyleBackColor = true;
@@ -352,16 +352,6 @@
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
             dgvMascotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvMascotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvMascotas.DefaultCellStyle = dataGridViewCellStyle5;
-            dgvMascotas.Location = new Point(13, 88);
-            dgvMascotas.Margin = new Padding(3, 2, 3, 2);
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = SystemColors.Window;
             dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
@@ -371,6 +361,7 @@
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
             dgvMascotas.DefaultCellStyle = dataGridViewCellStyle8;
             dgvMascotas.Location = new Point(15, 117);
+            dgvMascotas.Margin = new Padding(3, 2, 3, 2);
             dgvMascotas.Name = "dgvMascotas";
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = SystemColors.Control;
@@ -409,20 +400,128 @@
             // 
             // tabVeterinarios
             // 
+            tabVeterinarios.Controls.Add(dgvVeterinarios);
+            tabVeterinarios.Controls.Add(btnActualizarVet);
+            tabVeterinarios.Controls.Add(chkActivosVet);
+            tabVeterinarios.Controls.Add(btnModificarVet);
+            tabVeterinarios.Controls.Add(btnBajaVet);
+            tabVeterinarios.Controls.Add(btnNuevoVet);
             tabVeterinarios.Controls.Add(btnEspecialidad);
             tabVeterinarios.Location = new Point(4, 24);
             tabVeterinarios.Name = "tabVeterinarios";
-            tabVeterinarios.Padding = new Padding(3, 3, 3, 3);
+            tabVeterinarios.Padding = new Padding(3);
             tabVeterinarios.Size = new Size(787, 419);
             tabVeterinarios.TabIndex = 4;
             tabVeterinarios.Text = "Veterinarios";
             tabVeterinarios.UseVisualStyleBackColor = true;
             // 
+            // dgvVeterinarios
+            // 
+            dgvVeterinarios.AllowUserToAddRows = false;
+            dgvVeterinarios.AllowUserToDeleteRows = false;
+            dgvVeterinarios.AllowUserToResizeColumns = false;
+            dgvVeterinarios.AllowUserToResizeRows = false;
+            dgvVeterinarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Control;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvVeterinarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dgvVeterinarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVeterinarios.Cursor = Cursors.Hand;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dgvVeterinarios.DefaultCellStyle = dataGridViewCellStyle11;
+            dgvVeterinarios.Location = new Point(6, 102);
+            dgvVeterinarios.MultiSelect = false;
+            dgvVeterinarios.Name = "dgvVeterinarios";
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Control;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgvVeterinarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dgvVeterinarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVeterinarios.Size = new Size(775, 310);
+            dgvVeterinarios.TabIndex = 8;
+            // 
+            // btnActualizarVet
+            // 
+            btnActualizarVet.BackColor = Color.Transparent;
+            btnActualizarVet.Cursor = Cursors.Hand;
+            btnActualizarVet.Location = new Point(581, 35);
+            btnActualizarVet.Name = "btnActualizarVet";
+            btnActualizarVet.Size = new Size(95, 28);
+            btnActualizarVet.TabIndex = 7;
+            btnActualizarVet.Text = "Actualizar";
+            btnActualizarVet.UseVisualStyleBackColor = false;
+            btnActualizarVet.Click += btnActualizarVet_Click;
+            // 
+            // chkActivosVet
+            // 
+            chkActivosVet.AutoSize = true;
+            chkActivosVet.Checked = true;
+            chkActivosVet.CheckState = CheckState.Checked;
+            chkActivosVet.Cursor = Cursors.Hand;
+            chkActivosVet.Location = new Point(695, 44);
+            chkActivosVet.Name = "chkActivosVet";
+            chkActivosVet.Size = new Size(89, 19);
+            chkActivosVet.TabIndex = 6;
+            chkActivosVet.Text = "Solo activos";
+            chkActivosVet.UseVisualStyleBackColor = true;
+            chkActivosVet.CheckedChanged += chkActivosVet_CheckedChanged;
+            // 
+            // btnModificarVet
+            // 
+            btnModificarVet.BackColor = Color.Transparent;
+            btnModificarVet.Cursor = Cursors.Hand;
+            btnModificarVet.Location = new Point(257, 20);
+            btnModificarVet.Name = "btnModificarVet";
+            btnModificarVet.Size = new Size(132, 43);
+            btnModificarVet.TabIndex = 5;
+            btnModificarVet.Text = "Modificar veterinario";
+            btnModificarVet.UseVisualStyleBackColor = false;
+            btnModificarVet.Click += btnModificarVet_Click;
+            // 
+            // btnBajaVet
+            // 
+            btnBajaVet.BackColor = Color.Transparent;
+            btnBajaVet.Cursor = Cursors.Hand;
+            btnBajaVet.Location = new Point(138, 20);
+            btnBajaVet.Name = "btnBajaVet";
+            btnBajaVet.Size = new Size(113, 43);
+            btnBajaVet.TabIndex = 4;
+            btnBajaVet.Text = "Dar de baja";
+            btnBajaVet.UseVisualStyleBackColor = false;
+            btnBajaVet.Click += btnBajaVet_Click;
+            // 
+            // btnNuevoVet
+            // 
+            btnNuevoVet.BackColor = Color.Transparent;
+            btnNuevoVet.Cursor = Cursors.Hand;
+            btnNuevoVet.Location = new Point(6, 20);
+            btnNuevoVet.Name = "btnNuevoVet";
+            btnNuevoVet.Size = new Size(126, 43);
+            btnNuevoVet.TabIndex = 3;
+            btnNuevoVet.Text = "+ Nuevo veterinario";
+            btnNuevoVet.UseVisualStyleBackColor = false;
+            btnNuevoVet.Click += btnNuevoVet_Click;
+            // 
             // btnEspecialidad
             // 
             btnEspecialidad.BackColor = Color.Transparent;
             btnEspecialidad.Cursor = Cursors.Hand;
-            btnEspecialidad.Location = new Point(245, 20);
+            btnEspecialidad.Location = new Point(411, 20);
             btnEspecialidad.Name = "btnEspecialidad";
             btnEspecialidad.Size = new Size(113, 43);
             btnEspecialidad.TabIndex = 2;
@@ -450,6 +549,8 @@
             tabMascotas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMascotas).EndInit();
             tabVeterinarios.ResumeLayout(false);
+            tabVeterinarios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvVeterinarios).EndInit();
             ResumeLayout(false);
         }
 
@@ -478,5 +579,11 @@
         private ComboBox cbDuenio;
         private Label label2;
         private Label label1;
+        private Button btnModificarVet;
+        private Button btnBajaVet;
+        private Button btnNuevoVet;
+        private Button btnActualizarVet;
+        private CheckBox chkActivosVet;
+        private DataGridView dgvVeterinarios;
     }
 }

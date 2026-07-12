@@ -1,4 +1,5 @@
 ﻿using BE;
+using BE.DTO;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,24 @@ namespace Mapper
             veterinario.Activo = Convert.ToBoolean(reader["ACTIVO"]);
             veterinario.Especialidades = especialidades;
             return veterinario;
+        }
+        public static DTOVeterinario Map(BEVeterinario veterinario)
+        {
+            string especialidades = string.Join(", ", veterinario.Especialidades.Select(e => e.NombreEspecialidad));
+
+            return new DTOVeterinario(veterinario.IdVeterinario, veterinario.Nombre,
+                                      veterinario.Apellido, veterinario.Matricula,
+                                      especialidades, veterinario.Activo);
+        }
+
+        public static List<DTOVeterinario> Map(List<BEVeterinario> veterinarios)
+        {
+            List<DTOVeterinario> lista = new List<DTOVeterinario>();
+            foreach (var veterinario in veterinarios)
+            {
+                lista.Add(Map(veterinario));
+            }
+            return lista;
         }
     }
 }
