@@ -131,6 +131,7 @@
             btnCancelar.TabIndex = 10;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click_1;
             // 
             // btnGuardar
             // 
@@ -140,6 +141,7 @@
             btnGuardar.TabIndex = 11;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // FormMascotaAM
             // 
@@ -159,7 +161,8 @@
             Controls.Add(cmbDueno);
             Controls.Add(lblDueno);
             Name = "FormMascotaAM";
-            Text = "FormMascotaAM";
+            Text = "Nueva Mascota :)";
+            Load += FormMascotaAM_Load;
             ResumeLayout(false);
             PerformLayout();
         }
