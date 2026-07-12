@@ -10,6 +10,7 @@ namespace VeterinariaLasLomas
     {
         private BLLCliente bllCliente = new BLLCliente();
         private BLLMascota bllMascota = new BLLMascota();
+        private BLLTurno bllTurno = new BLLTurno();
 
         public Form1()
         {
@@ -22,6 +23,7 @@ namespace VeterinariaLasLomas
 
             // MASCOTAS
             ActualizarGridMascota();
+            CargarDuenios();
         }
 
         private void btnNuevaMascota_Click(object sender, EventArgs e)
@@ -327,9 +329,132 @@ namespace VeterinariaLasLomas
             }
         }
 
+        private void CargarDuenios()
+        {
+            try
+            {
+                List<BECliente> clientes =
+                    bllCliente.GetAll();
+
+                cbDuenio.DataSource = null;
+                cbDuenio.DataSource = clientes;
+
+                cbDuenio.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "No se pudieron cargar los dueños. " +
+                    ex.Message
+                );
+            }
+        }
+
+        private void CargarMascotasDelDuenio()
+        {
+            cbMascota.DataSource = null;
+
+            BECliente duenioSeleccionado =
+                cbDuenio.SelectedItem as BECliente;
+
+            if (duenioSeleccionado == null)
+            {
+                cbMascota.SelectedIndex = -1;
+                return;
+            }
+
+            List<BEMascota> mascotasDelDuenio =
+                bllMascota
+                    .GetAll()
+                    .Where(m =>
+                        m.Cliente != null &&
+                        m.Cliente.IdCliente ==
+                            duenioSeleccionado.IdCliente)
+                    .ToList();
+
+            cbMascota.DataSource = mascotasDelDuenio;
+            cbMascota.DisplayMember = "Nombre";
+            cbMascota.ValueMember = "IdMascota";
+            cbMascota.SelectedIndex = -1;
+        }
+
+
+        private void CargarHistorial(int idMascota)
+        {
+            try
+            {
+                List<DTOHistorial> historial =
+                    bllTurno.GetHistorialPorMascota(idMascota);
+
+                dgvHistorial.DataSource = null;
+                dgvHistorial.DataSource = historial;
+
+                dgvHistorial.AutoSizeColumnsMode =
+                    DataGridViewAutoSizeColumnsMode.Fill;
+
+                dgvHistorial.ReadOnly = true;
+                dgvHistorial.AllowUserToAddRows = false;
+                dgvHistorial.SelectionMode =
+                    DataGridViewSelectionMode.FullRowSelect;
+
+                if (dgvHistorial.Columns["Duenio"] != null)
+                {
+                    dgvHistorial.Columns["Duenio"].HeaderText =
+                        "Dueño";
+                }
+
+                if (dgvHistorial.Columns["Fecha"] != null)
+                {
+                    dgvHistorial.Columns["Fecha"]
+                        .DefaultCellStyle.Format = "dd/MM/yyyy";
+                }
+
+                if (dgvHistorial.Columns["Diagnostico"] != null)
+                {
+                    dgvHistorial.Columns["Diagnostico"].HeaderText =
+                        "Diagnóstico";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "No se pudo cargar el historial. " +
+                    ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
+
         private void cbMascotas_CheckedChanged(object sender, EventArgs e)
         {
             ActualizarGridMascota();
+        }
+
+
+        private void cbDuenio_SelectedIndexChanged(
+        object sender,
+        EventArgs e)
+        {
+            CargarMascotasDelDuenio();
+        }
+
+        private void cbMascota_SelectedIndexChanged(
+         object sender,
+         EventArgs e)
+        {
+            BEMascota mascota =
+                cbMascota.SelectedItem as BEMascota;
+
+            if (mascota == null)
+            {
+                dgvHistorial.DataSource = null;
+                return;
+            }
+
+            CargarHistorial(mascota.IdMascota);
         }
     }
 }
