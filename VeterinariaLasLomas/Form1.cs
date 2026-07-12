@@ -166,6 +166,7 @@ namespace VeterinariaLasLomas
                 dgvMascotas.Columns["Id"].Visible = false;
                 dgvMascotas.Columns["Activo"].Visible = false;
 
+
                 if (dgvMascotas.Columns["Id"] != null)
                 {
                     dgvMascotas.Columns["Id"].HeaderText = "Id";
