@@ -50,6 +50,10 @@ namespace BLL
                 throw;
             }
         }
+        public BECliente GetById(int id)
+        {
+            return dalCliente.GetById(id);
+        }
 
         public void Guardar(BECliente cliente) 
         {
@@ -94,11 +98,18 @@ namespace BLL
             BECliente existente = dalCliente.GetById(id);
             if (existente == null)
                 throw new Exception("El cliente con el ID ingresado no existe.");
+            try
+            {
 
             using (TransactionScope trx = new TransactionScope())
             {
                 dalCliente.Delete(id);
                 trx.Complete();
+            }
+            }
+            catch
+            {
+                throw;
             }
         }
     }

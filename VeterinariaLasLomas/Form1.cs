@@ -1,4 +1,5 @@
 using BE;
+using BE.DTO;
 using BLL;
 
 namespace VeterinariaLasLomas
@@ -23,14 +24,121 @@ namespace VeterinariaLasLomas
 
         private void ActualizarGridCliente()
         {
-            dgvClientes.DataSource = null;
-            dgvClientes.DataSource = bllCliente.GetAll();
+            try
+            {
+                List<BECliente> clientes = bllCliente.GetAll();
+
+                if (chkActivos.Checked)
+                {
+                    clientes = clientes.Where(c => c.Activo).ToList();
+                }
+                List<DTOCliente> listaClientes = clientes.Select(c => new DTOCliente
+                {
+                    Id = c.IdCliente,
+                    Nombre = c.Nombre,
+                    Apellido = c.Apellido,
+                    DNI = c.Dni,
+                    Telefono = c.Telefono,
+                    Email = c.Email
+                }).ToList();
+                dgvClientes.DataSource = null;
+                dgvClientes.DataSource = listaClientes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
-            FormClienteAM formClienteAM = new FormClienteAM();
-            formClienteAM.ShowDialog();
+            try
+            {
+                FormClienteAM formClienteAM = new FormClienteAM();
+                if (formClienteAM.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridCliente();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnModificarCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvClientes.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente.");
+                    return;
+                }
+                DTOCliente dto = (DTOCliente)dgvClientes.CurrentRow.DataBoundItem;
+                BECliente seleccionado = bllCliente.GetById(dto.Id);
+
+                FormClienteAM formClienteAM = new FormClienteAM(seleccionado);
+                if (formClienteAM.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridCliente();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        private void btnBajaCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvClientes.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente.");
+                    return;
+                }
+
+                DTOCliente dto = (DTOCliente)dgvClientes.CurrentRow.DataBoundItem;
+
+                DialogResult confirma = MessageBox.Show(
+                    $"¿Dar de baja al cliente {dto.ToString()}?",
+                    "Confirmar baja",
+                    MessageBoxButtons.YesNo);
+
+                if (confirma == DialogResult.Yes)
+                {
+                    bllCliente.DarDeBaja(dto.Id);
+                    MessageBox.Show("Cliente dado de baja correctamente.");
+                    ActualizarGridCliente();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnActualizarClientes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ActualizarGridCliente();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void chkActivos_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ActualizarGridCliente();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // -------------------- MASCOTAS --------------------
@@ -200,5 +308,7 @@ namespace VeterinariaLasLomas
                 );
             }
         }
+
+
     }
 }
