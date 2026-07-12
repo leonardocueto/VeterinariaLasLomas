@@ -1,4 +1,5 @@
 ﻿using BE;
+using BE.DTO;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,20 @@ namespace Mapper
             cliente.Email = Convert.ToString(reader["EMAIL"]);
             cliente.Activo = Convert.ToBoolean(reader["ACTIVO"]);
             return cliente;
+        }
+        public static DTOCliente Map(BECliente cliente)
+        {
+            return new DTOCliente(cliente.IdCliente, cliente.Nombre, cliente.Apellido,
+                                  cliente.Dni, cliente.Telefono, cliente.Email, cliente.Activo);
+        }
+        public static List<DTOCliente> Map(List<BECliente> clientes)
+        {
+            List<DTOCliente> lista = new List<DTOCliente>();
+            foreach (var cliente in clientes)
+            {
+                lista.Add(Map(cliente));
+            }
+            return lista;
         }
     }
 }

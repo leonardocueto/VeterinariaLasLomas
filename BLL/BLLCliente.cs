@@ -1,5 +1,7 @@
 ﻿using BE;
+using BE.DTO;
 using DAL;
+using Mapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,6 +51,10 @@ namespace BLL
             {
                 throw;
             }
+        }
+        public List<DTOCliente> GetAllDTO()
+        {
+            return MapperCliente.Map(dalCliente.GetAll());
         }
         public BECliente GetById(int id)
         {

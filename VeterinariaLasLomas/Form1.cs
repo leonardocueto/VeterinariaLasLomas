@@ -26,23 +26,16 @@ namespace VeterinariaLasLomas
         {
             try
             {
-                List<BECliente> clientes = bllCliente.GetAll();
+                List<DTOCliente> clientes = bllCliente.GetAllDTO();
 
                 if (chkActivos.Checked)
                 {
                     clientes = clientes.Where(c => c.Activo).ToList();
                 }
-                List<DTOCliente> listaClientes = clientes.Select(c => new DTOCliente
-                {
-                    Id = c.IdCliente,
-                    Nombre = c.Nombre,
-                    Apellido = c.Apellido,
-                    DNI = c.Dni,
-                    Telefono = c.Telefono,
-                    Email = c.Email
-                }).ToList();
                 dgvClientes.DataSource = null;
-                dgvClientes.DataSource = listaClientes;
+                dgvClientes.DataSource = clientes;
+                dgvClientes.Columns["Id"].Visible = false;
+                dgvClientes.Columns["Activo"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -102,7 +95,7 @@ namespace VeterinariaLasLomas
                 DTOCliente dto = (DTOCliente)dgvClientes.CurrentRow.DataBoundItem;
 
                 DialogResult confirma = MessageBox.Show(
-                    $"¿Dar de baja al cliente {dto.ToString()}?",
+                    $"¿Dar de baja al cliente {dto.Nombre} {dto.Apellido}?",
                     "Confirmar baja",
                     MessageBoxButtons.YesNo);
 
