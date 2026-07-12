@@ -12,10 +12,18 @@ namespace BE.DTO
         public string DNI { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
+        public bool Activo { get; set; }
 
-        public override string ToString()
+        public DTOCliente(int id, string nombre, string apellido, string dni,
+                          string telefono, string email, bool activo)
         {
-            return $"{Nombre} {Apellido}";
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            DNI = dni;
+            Telefono = telefono;
+            Email = email;
+            Activo = activo;
         }
     }
 }
