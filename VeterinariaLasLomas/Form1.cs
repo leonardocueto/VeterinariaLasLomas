@@ -436,6 +436,7 @@ namespace VeterinariaLasLomas
         {
             FormEspecialidades formEspecialidades = new FormEspecialidades();
             formEspecialidades.ShowDialog();
+        }
 
         private void cbMascotas_CheckedChanged(object sender, EventArgs e)
         {
