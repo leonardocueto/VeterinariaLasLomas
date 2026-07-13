@@ -9,7 +9,7 @@ namespace DAL
 {
     public class DALMascota
     {
-        private readonly string connectionString =
+        private string connectionString =
             ConfigurationManager
                 .ConnectionStrings["connectionString"]
                 .ConnectionString;

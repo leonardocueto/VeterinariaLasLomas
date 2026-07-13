@@ -13,7 +13,10 @@ namespace BE.DTO
         public string Telefono { get; set; }
         public string Email { get; set; }
         public bool Activo { get; set; }
-
+        public string NombreCompleto
+        {
+            get { return Apellido + ", " + Nombre; }
+        }
         public DTOCliente(int id, string nombre, string apellido, string dni,
                           string telefono, string email, bool activo)
         {

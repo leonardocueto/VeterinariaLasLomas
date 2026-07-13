@@ -12,7 +12,10 @@ namespace BE.DTO
         public string Matricula { get; set; }
         public string Especialidades { get; set; }
         public bool Activo { get; set; }
-
+        public string NombreCompleto
+        {
+            get { return Apellido + ", " + Nombre; }
+        }
         public DTOVeterinario(int id, string nombre, string apellido, string matricula,
                               string especialidades, bool activo)
         {

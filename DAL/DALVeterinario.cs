@@ -10,7 +10,7 @@ namespace DAL
 {
     public class DALVeterinario
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         private DALEspecialidad dalEspecialidad = new DALEspecialidad();
         public List<BEVeterinario> GetAll()
         {

@@ -10,7 +10,7 @@ namespace DAL
 {
     public class DALCliente
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         
         public List<BECliente> GetAll()
         {

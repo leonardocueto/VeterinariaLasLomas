@@ -382,46 +382,46 @@ namespace VeterinariaLasLomas
 
         private void CargarHistorial(int idMascota)
         {
-            try
-            {
-              List<DTOHistorial> historial =
-                                    bllTurno.GetHistorialPorMascota(idMascota);
+            /*  try
+              {
+                List<DTOHistorial> historial =
+                                      bllTurno.GetHistorialPorMascota(idMascota);
 
-                                dgvHistorial.DataSource = null;
-                                dgvHistorial.DataSource = historial;
+                                  dgvHistorial.DataSource = null;
+                                  dgvHistorial.DataSource = historial;
 
-                                dgvHistorial.AutoSizeColumnsMode =
-                                    DataGridViewAutoSizeColumnsMode.Fill;
+                                  dgvHistorial.AutoSizeColumnsMode =
+                                      DataGridViewAutoSizeColumnsMode.Fill;
 
-                                dgvHistorial.ReadOnly = true;
-                                dgvHistorial.AllowUserToAddRows = false;
-                                dgvHistorial.SelectionMode =
-                                    DataGridViewSelectionMode.FullRowSelect;
+                                  dgvHistorial.ReadOnly = true;
+                                  dgvHistorial.AllowUserToAddRows = false;
+                                  dgvHistorial.SelectionMode =
+                                      DataGridViewSelectionMode.FullRowSelect;
 
-                if (dgvHistorial.Columns["Duenio"] != null)
-                {
-                    dgvHistorial.Columns["Duenio"].HeaderText = "Dueño";
-                }
+                  if (dgvHistorial.Columns["Duenio"] != null)
+                  {
+                      dgvHistorial.Columns["Duenio"].HeaderText = "Dueño";
+                  }
 
-                if (dgvHistorial.Columns["Fecha"] != null)
-                {
-                    dgvHistorial.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
-                }
+                  if (dgvHistorial.Columns["Fecha"] != null)
+                  {
+                      dgvHistorial.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                  }
 
-                if (dgvHistorial.Columns["Diagnostico"] != null)
-                {
-                    dgvHistorial.Columns["Diagnostico"].HeaderText = "Diagnóstico";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "No se pudo cargar el historial. " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
+                  if (dgvHistorial.Columns["Diagnostico"] != null)
+                  {
+                      dgvHistorial.Columns["Diagnostico"].HeaderText = "Diagnóstico";
+                  }
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show(
+                      "No se pudo cargar el historial. " + ex.Message,
+                      "Error",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error
+                  );
+              }*/
         }
 
 
@@ -572,6 +572,129 @@ namespace VeterinariaLasLomas
         private void chkActivosVet_CheckedChanged(object sender, EventArgs e)
         {
             ActualizarGridVeterinario();
+        }
+        // -------------------- Turnos --------------------
+
+        private void ActualizarGridTurno()
+        {
+            try
+            {
+                dgvTurnos.DataSource = null;
+                dgvTurnos.DataSource = bllTurno.GetAllDTO();
+
+                dgvTurnos.Columns["Id"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnNuevoTurno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormTurnoAM form = new FormTurnoAM();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridTurno();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnModificarTurno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvTurnos.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un turno.");
+                    return;
+                }
+
+                DTOTurno dto = (DTOTurno)dgvTurnos.CurrentRow.DataBoundItem;
+                BETurno seleccionado = bllTurno.GetById(dto.Id);
+
+                FormTurnoAM form = new FormTurnoAM(seleccionado);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridTurno();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnCancelarTurno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvTurnos.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un turno.");
+                    return;
+                }
+
+                DTOTurno dto = (DTOTurno)dgvTurnos.CurrentRow.DataBoundItem;
+
+                DialogResult confirma = MessageBox.Show(
+                    $"¿Cancelar el turno de {dto.Mascota} ({dto.FechaHora})?",
+                    "Confirmar cancelación",
+                    MessageBoxButtons.YesNo);
+
+                if (confirma == DialogResult.Yes)
+                {
+                    bllTurno.Cancelar(dto.Id);
+                    MessageBox.Show("Turno cancelado correctamente.");
+                    ActualizarGridTurno();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnMarcarAtendido_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvTurnos.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar un turno.");
+                    return;
+                }
+
+                DTOTurno dto = (DTOTurno)dgvTurnos.CurrentRow.DataBoundItem;
+                BETurno seleccionado = bllTurno.GetById(dto.Id);
+
+                FormCerrarAtencion form = new FormCerrarAtencion(seleccionado);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    ActualizarGridTurno();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnActualizarTurnos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ActualizarGridTurno();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
