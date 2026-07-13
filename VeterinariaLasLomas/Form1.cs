@@ -696,5 +696,10 @@ namespace VeterinariaLasLomas
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnActualizarMascota_Click(object sender, EventArgs e)
+        {
+            ActualizarGridMascota();
+        }
     }
 }
