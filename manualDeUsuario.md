@@ -13,9 +13,7 @@ La misma comprende una gestión de turnos en combinación con otras pestañas:  
 
 <p><b> Turnos: </b>  
 Comprende la asignacion, la asistencia en curso, la modificación o la cancelación.
-
-
-
+<img width="931" height="470" alt="image" src="https://github.com/user-attachments/assets/90f4a65f-9cba-4eee-8037-294e593c2981" />
 
 <b> Historial: </b> 
 Ingresamos los datos del cliente y automáticamente busca a las mascotas de ese cliente<br> 
@@ -23,7 +21,7 @@ Ingresamos los datos del cliente y automáticamente busca a las mascotas de ese 
 El mismo debe estar pre-cargado con anterioridad para que se pueda visualizar todos los datos.<br> 
 <img width="932" height="367" alt="image" src="https://github.com/user-attachments/assets/f7c1afa7-d3af-489a-abbb-f3ac597e6a05" /><br> 
 
-<b> Cliente:</b>  
+<b> Cliente:
 Cuando ingresamos a esta pestaña tenemos multiples opciones para realizar: Podemos ingresar en sistema a un nuevo cliente, modificar o dar de baja a uno.
 A su vez visualizamos un checkbox que nos va a permitir filtrar por los clientes que se encuentran activos y los que no.
 <img width="935" height="355" alt="image" src="https://github.com/user-attachments/assets/ba8a27c9-e09a-406f-8b71-61ee7405b1db" />
