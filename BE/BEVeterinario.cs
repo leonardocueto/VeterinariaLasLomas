@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-    public class BEVeterinario : BECliente
+    public class BEVeterinario : BEPersona
     {
         public int IdVeterinario { get; set; }
         public string Matricula { get; set; }
