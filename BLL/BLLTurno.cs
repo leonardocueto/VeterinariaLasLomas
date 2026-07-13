@@ -31,9 +31,9 @@ namespace BLL
             return dalTurno.GetById(id);
         }
 
-        public List<BETurno> GetHistorialPorMascota(int idMascota)
+        public List<DTOHistorial> GetHistorialPorMascota(int idMascota)
         {
-            return dalTurno.GetHistorialPorMascota(idMascota);
+            return MapperTurno.MapHistorial(dalTurno.GetHistorialPorMascota(idMascota));
         }
 
         private void validarSolapamiento(BETurno turno)

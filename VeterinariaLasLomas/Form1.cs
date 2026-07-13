@@ -21,8 +21,7 @@ namespace VeterinariaLasLomas
         private void Form1_Load(object sender, EventArgs e)
         {
             ActualizarGridCliente();
-
-            // MASCOTAS
+            ActualizarGridTurno();
             ActualizarGridMascota();
             CargarDuenios();
             ActualizarGridVeterinario();
@@ -335,20 +334,17 @@ namespace VeterinariaLasLomas
         {
             try
             {
-                List<BECliente> clientes =
-                    bllCliente.GetAll();
+                List<BECliente> clientes = bllCliente.GetAll().Where(c => c.Activo).ToList();
 
                 cbDuenio.DataSource = null;
+                cbDuenio.DisplayMember = "NombreCompleto";
+                cbDuenio.ValueMember = "IdCliente";
                 cbDuenio.DataSource = clientes;
-
                 cbDuenio.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "No se pudieron cargar los dueños. " +
-                    ex.Message
-                );
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -382,46 +378,26 @@ namespace VeterinariaLasLomas
 
         private void CargarHistorial(int idMascota)
         {
-            /*  try
-              {
-                List<DTOHistorial> historial =
-                                      bllTurno.GetHistorialPorMascota(idMascota);
+            try
+            {
+                List<DTOHistorial> historial = bllTurno.GetHistorialPorMascota(idMascota);
 
-                                  dgvHistorial.DataSource = null;
-                                  dgvHistorial.DataSource = historial;
+                dgvHistorial.DataSource = null;
+                dgvHistorial.DataSource = historial;
 
-                                  dgvHistorial.AutoSizeColumnsMode =
-                                      DataGridViewAutoSizeColumnsMode.Fill;
+                if (dgvHistorial.Columns["Duenio"] != null)
+                    dgvHistorial.Columns["Duenio"].HeaderText = "Dueño";
 
-                                  dgvHistorial.ReadOnly = true;
-                                  dgvHistorial.AllowUserToAddRows = false;
-                                  dgvHistorial.SelectionMode =
-                                      DataGridViewSelectionMode.FullRowSelect;
+                if (dgvHistorial.Columns["Fecha"] != null)
+                    dgvHistorial.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
 
-                  if (dgvHistorial.Columns["Duenio"] != null)
-                  {
-                      dgvHistorial.Columns["Duenio"].HeaderText = "Dueño";
-                  }
-
-                  if (dgvHistorial.Columns["Fecha"] != null)
-                  {
-                      dgvHistorial.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
-                  }
-
-                  if (dgvHistorial.Columns["Diagnostico"] != null)
-                  {
-                      dgvHistorial.Columns["Diagnostico"].HeaderText = "Diagnóstico";
-                  }
-              }
-              catch (Exception ex)
-              {
-                  MessageBox.Show(
-                      "No se pudo cargar el historial. " + ex.Message,
-                      "Error",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Error
-                  );
-              }*/
+                if (dgvHistorial.Columns["Diagnostico"] != null)
+                    dgvHistorial.Columns["Diagnostico"].HeaderText = "Diagnóstico";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
@@ -438,12 +414,9 @@ namespace VeterinariaLasLomas
             CargarMascotasDelDuenio();
         }
 
-        private void cbMascota_SelectedIndexChanged(
-         object sender,
-         EventArgs e)
+        private void cbMascota_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BEMascota mascota =
-                cbMascota.SelectedItem as BEMascota;
+            BEMascota mascota = cbMascota.SelectedItem as BEMascota;
 
             if (mascota == null)
             {
@@ -451,7 +424,10 @@ namespace VeterinariaLasLomas
                 return;
             }
 
-            CargarHistorial(mascota.IdMascota);
+            List<DTOHistorial> historial = bllTurno.GetHistorialPorMascota(mascota.IdMascota);
+
+            dgvHistorial.DataSource = null;
+            dgvHistorial.DataSource = historial;
         }
 
         // -------------------- Especialidades --------------------

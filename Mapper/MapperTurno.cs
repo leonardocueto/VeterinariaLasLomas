@@ -45,5 +45,27 @@ namespace Mapper
             }
             return lista;
         }
+        public static DTOHistorial MapHistorial(BETurno turno)
+        {
+            string dueño = turno.Mascota.Cliente.Apellido + ", " + turno.Mascota.Cliente.Nombre;
+
+            return new DTOHistorial(
+                turno.Mascota.Nombre,
+                dueño,
+                turno.FechaHora,
+                turno.Veterinario.Apellido + ", " + turno.Veterinario.Nombre,
+                turno.TipoConsulta.NombreTipo,
+                turno.Diagnostico
+            );
+        }
+        public static List<DTOHistorial> MapHistorial(List<BETurno> turnos)
+        {
+            List<DTOHistorial> lista = new List<DTOHistorial>();
+            foreach (BETurno turno in turnos)
+            {
+                lista.Add(MapHistorial(turno));
+            }
+            return lista;
+        }
     }
 }
