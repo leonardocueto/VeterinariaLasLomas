@@ -10,7 +10,7 @@ namespace DAL
 {
     public class DALEspecialidad
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         public List<BEEspecialidad> GetAll()
         {
             List<BEEspecialidad> especialidades = new List<BEEspecialidad>();

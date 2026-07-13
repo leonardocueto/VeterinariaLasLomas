@@ -28,20 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle46 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle47 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle48 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle49 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle50 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle51 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle52 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle53 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle54 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle55 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle56 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle57 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle58 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle59 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle60 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             tabTurnos = new TabPage();
+            dgvTurnos = new DataGridView();
+            btnActualizarTurnos = new Button();
+            btnMarcarAtendido = new Button();
+            btnModificarTurno = new Button();
+            btnCancelarTurno = new Button();
+            btnNuevoTurno = new Button();
             tabHistorial = new TabPage();
             dgvHistorial = new DataGridView();
             cbMascota = new ComboBox();
@@ -70,6 +79,8 @@
             btnNuevoVet = new Button();
             btnEspecialidad = new Button();
             tabControl.SuspendLayout();
+            tabTurnos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvTurnos).BeginInit();
             tabHistorial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
             tabClientes.SuspendLayout();
@@ -96,6 +107,12 @@
             // 
             // tabTurnos
             // 
+            tabTurnos.Controls.Add(dgvTurnos);
+            tabTurnos.Controls.Add(btnActualizarTurnos);
+            tabTurnos.Controls.Add(btnMarcarAtendido);
+            tabTurnos.Controls.Add(btnModificarTurno);
+            tabTurnos.Controls.Add(btnCancelarTurno);
+            tabTurnos.Controls.Add(btnNuevoTurno);
             tabTurnos.Location = new Point(4, 24);
             tabTurnos.Name = "tabTurnos";
             tabTurnos.Padding = new Padding(3);
@@ -103,6 +120,105 @@
             tabTurnos.TabIndex = 0;
             tabTurnos.Text = "Turnos";
             tabTurnos.UseVisualStyleBackColor = true;
+            // 
+            // dgvTurnos
+            // 
+            dgvTurnos.AllowUserToAddRows = false;
+            dgvTurnos.AllowUserToDeleteRows = false;
+            dgvTurnos.AllowUserToResizeColumns = false;
+            dgvTurnos.AllowUserToResizeRows = false;
+            dgvTurnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle46.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.BackColor = SystemColors.Control;
+            dataGridViewCellStyle46.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle46.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle46.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle46.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle46.WrapMode = DataGridViewTriState.True;
+            dgvTurnos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            dgvTurnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle47.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = SystemColors.Window;
+            dataGridViewCellStyle47.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle47.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle47.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = DataGridViewTriState.False;
+            dgvTurnos.DefaultCellStyle = dataGridViewCellStyle47;
+            dgvTurnos.Location = new Point(6, 84);
+            dgvTurnos.MultiSelect = false;
+            dgvTurnos.Name = "dgvTurnos";
+            dataGridViewCellStyle48.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = SystemColors.Control;
+            dataGridViewCellStyle48.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle48.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle48.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle48.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = DataGridViewTriState.True;
+            dgvTurnos.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
+            dgvTurnos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTurnos.Size = new Size(778, 328);
+            dgvTurnos.TabIndex = 9;
+            // 
+            // btnActualizarTurnos
+            // 
+            btnActualizarTurnos.BackColor = Color.Transparent;
+            btnActualizarTurnos.Cursor = Cursors.Hand;
+            btnActualizarTurnos.Location = new Point(669, 33);
+            btnActualizarTurnos.Name = "btnActualizarTurnos";
+            btnActualizarTurnos.Size = new Size(95, 28);
+            btnActualizarTurnos.TabIndex = 8;
+            btnActualizarTurnos.Text = "Actualizar";
+            btnActualizarTurnos.UseVisualStyleBackColor = false;
+            btnActualizarTurnos.Click += btnActualizarTurnos_Click;
+            // 
+            // btnMarcarAtendido
+            // 
+            btnMarcarAtendido.BackColor = Color.Transparent;
+            btnMarcarAtendido.Cursor = Cursors.Hand;
+            btnMarcarAtendido.Location = new Point(363, 18);
+            btnMarcarAtendido.Name = "btnMarcarAtendido";
+            btnMarcarAtendido.Size = new Size(113, 43);
+            btnMarcarAtendido.TabIndex = 5;
+            btnMarcarAtendido.Text = "Marcar atendido";
+            btnMarcarAtendido.UseVisualStyleBackColor = false;
+            btnMarcarAtendido.Click += btnMarcarAtendido_Click;
+            // 
+            // btnModificarTurno
+            // 
+            btnModificarTurno.BackColor = Color.Transparent;
+            btnModificarTurno.Cursor = Cursors.Hand;
+            btnModificarTurno.Location = new Point(244, 18);
+            btnModificarTurno.Name = "btnModificarTurno";
+            btnModificarTurno.Size = new Size(113, 43);
+            btnModificarTurno.TabIndex = 4;
+            btnModificarTurno.Text = "Modificar turno";
+            btnModificarTurno.UseVisualStyleBackColor = false;
+            btnModificarTurno.Click += btnModificarTurno_Click;
+            // 
+            // btnCancelarTurno
+            // 
+            btnCancelarTurno.BackColor = Color.Transparent;
+            btnCancelarTurno.Cursor = Cursors.Hand;
+            btnCancelarTurno.Location = new Point(125, 18);
+            btnCancelarTurno.Name = "btnCancelarTurno";
+            btnCancelarTurno.Size = new Size(113, 43);
+            btnCancelarTurno.TabIndex = 3;
+            btnCancelarTurno.Text = "Cancelar turno";
+            btnCancelarTurno.UseVisualStyleBackColor = false;
+            btnCancelarTurno.Click += btnCancelarTurno_Click;
+            // 
+            // btnNuevoTurno
+            // 
+            btnNuevoTurno.BackColor = Color.Transparent;
+            btnNuevoTurno.Cursor = Cursors.Hand;
+            btnNuevoTurno.Location = new Point(6, 18);
+            btnNuevoTurno.Name = "btnNuevoTurno";
+            btnNuevoTurno.Size = new Size(113, 43);
+            btnNuevoTurno.TabIndex = 2;
+            btnNuevoTurno.Text = "+ Nuevo turno";
+            btnNuevoTurno.UseVisualStyleBackColor = false;
+            btnNuevoTurno.Click += btnNuevoTurno_Click;
             // 
             // tabHistorial
             // 
@@ -122,33 +238,33 @@
             // 
             // dgvHistorial
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvHistorial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle49.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = SystemColors.Control;
+            dataGridViewCellStyle49.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle49.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle49.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = DataGridViewTriState.True;
+            dgvHistorial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;
             dgvHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvHistorial.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle50.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = SystemColors.Window;
+            dataGridViewCellStyle50.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle50.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle50.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle50.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle50.WrapMode = DataGridViewTriState.False;
+            dgvHistorial.DefaultCellStyle = dataGridViewCellStyle50;
             dgvHistorial.Location = new Point(6, 125);
             dgvHistorial.Name = "dgvHistorial";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvHistorial.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle51.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = SystemColors.Control;
+            dataGridViewCellStyle51.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle51.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle51.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle51.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle51.WrapMode = DataGridViewTriState.True;
+            dgvHistorial.RowHeadersDefaultCellStyle = dataGridViewCellStyle51;
             dgvHistorial.RowHeadersWidth = 51;
             dgvHistorial.Size = new Size(889, 431);
             dgvHistorial.TabIndex = 4;
@@ -270,36 +386,36 @@
             // 
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle52.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = SystemColors.Control;
+            dataGridViewCellStyle52.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle52.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle52.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle52.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle52.WrapMode = DataGridViewTriState.True;
+            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle52;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvClientes.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle53.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = SystemColors.Window;
+            dataGridViewCellStyle53.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle53.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle53.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle53.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle53;
             dgvClientes.Location = new Point(7, 109);
             dgvClientes.Margin = new Padding(3, 4, 3, 4);
             dgvClientes.MultiSelect = false;
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle54.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = SystemColors.Control;
+            dataGridViewCellStyle54.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle54.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle54.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle54.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
             dgvClientes.RowHeadersWidth = 51;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(778, 319);
@@ -343,34 +459,34 @@
             // 
             // dgvMascotas
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvMascotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle55.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle55.BackColor = SystemColors.Control;
+            dataGridViewCellStyle55.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle55.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle55.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle55.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle55.WrapMode = DataGridViewTriState.True;
+            dgvMascotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
             dgvMascotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvMascotas.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle56.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle56.BackColor = SystemColors.Window;
+            dataGridViewCellStyle56.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle56.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle56.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle56.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle56.WrapMode = DataGridViewTriState.False;
+            dgvMascotas.DefaultCellStyle = dataGridViewCellStyle56;
             dgvMascotas.Location = new Point(15, 117);
             dgvMascotas.Margin = new Padding(3, 2, 3, 2);
             dgvMascotas.Name = "dgvMascotas";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dgvMascotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle57.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle57.BackColor = SystemColors.Control;
+            dataGridViewCellStyle57.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle57.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle57.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle57.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle57.WrapMode = DataGridViewTriState.True;
+            dgvMascotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle57;
             dgvMascotas.RowHeadersWidth = 51;
             dgvMascotas.Size = new Size(767, 328);
             dgvMascotas.TabIndex = 2;
@@ -422,35 +538,35 @@
             dgvVeterinarios.AllowUserToResizeColumns = false;
             dgvVeterinarios.AllowUserToResizeRows = false;
             dgvVeterinarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.Control;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dgvVeterinarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle58.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle58.BackColor = SystemColors.Control;
+            dataGridViewCellStyle58.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle58.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle58.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle58.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle58.WrapMode = DataGridViewTriState.True;
+            dgvVeterinarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle58;
             dgvVeterinarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVeterinarios.Cursor = Cursors.Hand;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = SystemColors.Window;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dgvVeterinarios.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle59.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle59.BackColor = SystemColors.Window;
+            dataGridViewCellStyle59.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle59.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle59.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle59.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle59.WrapMode = DataGridViewTriState.False;
+            dgvVeterinarios.DefaultCellStyle = dataGridViewCellStyle59;
             dgvVeterinarios.Location = new Point(6, 102);
             dgvVeterinarios.MultiSelect = false;
             dgvVeterinarios.Name = "dgvVeterinarios";
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = SystemColors.Control;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dgvVeterinarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle60.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle60.BackColor = SystemColors.Control;
+            dataGridViewCellStyle60.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle60.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle60.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle60.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle60.WrapMode = DataGridViewTriState.True;
+            dgvVeterinarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle60;
             dgvVeterinarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvVeterinarios.Size = new Size(775, 310);
             dgvVeterinarios.TabIndex = 8;
@@ -539,6 +655,8 @@
             Text = "Form1";
             Load += Form1_Load;
             tabControl.ResumeLayout(false);
+            tabTurnos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvTurnos).EndInit();
             tabHistorial.ResumeLayout(false);
             tabHistorial.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).EndInit();
@@ -585,5 +703,11 @@
         private Button btnActualizarVet;
         private CheckBox chkActivosVet;
         private DataGridView dgvVeterinarios;
+        private DataGridView dgvTurnos;
+        private Button btnActualizarTurnos;
+        private Button btnMarcarAtendido;
+        private Button btnModificarTurno;
+        private Button btnCancelarTurno;
+        private Button btnNuevoTurno;
     }
 }
