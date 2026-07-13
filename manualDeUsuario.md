@@ -11,7 +11,11 @@ La misma comprende una gestión de turnos en combinación con otras pestañas:
   <p>Al ingresar a la misma podemos visualizar todas las pestañas pertenecientes a la veterinaria:
   <img width="932" height="92" alt="image" src="https://github.com/user-attachments/assets/b354a665-75ed-4de9-8504-7980d7c3a1d1" /></p>
 
-<p>Turnos
+<p>Turnos: 
+Comprende la asignacion, la asistencia en curso, la modificación o la cancelación.
+
+
+
 
 Historial: 
 Ingresamos los datos del cliente y automáticamente busca a las mascotas de ese cliente
@@ -32,6 +36,7 @@ Contamos con el mismo checkbox de filtrado de mascotas activas
 Veterinarios:
 Aquí se aloja toda la información de todos los veterinarios del sistema. Comprende el mismo sistema de alta, modificación y baja. 
 De forma adicional contamos con un botón de busqueda de veterinarios en base a sus especialidades. </p>
+<img width="796" height="483" alt="image" src="https://github.com/user-attachments/assets/c5f6fe92-e3ba-4f8d-b171-dfc1c625a5a0" />
 
 
 
